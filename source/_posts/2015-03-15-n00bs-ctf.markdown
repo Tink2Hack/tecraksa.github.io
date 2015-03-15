@@ -144,12 +144,19 @@ Later we did a intercept using Burp and we send the request to the Repeater we s
 <p>Contains a CISCO WEB -IDS login page. At initial stage we were doing some sql injection attacks nothing was working out. So whenever a user is buying a new device it might have a default username and password pre-configured. So we created a default Username and passowrd list for doing the automated Bruteforce thing. We intercepted the request into Burp and forwarded the request to the Burp-Intruder module, then select Username and password field and set the options as shown in below figures and then select the Payloads tab and load the Username and password list and hit `start-attack`.
 
 <p>Step 1:
+
 {% img http://i.imgur.com/rqfTp1X.png %}
+
 <p>Step 2:
+
 {% img http://i.imgur.com/lqbSmCH.png %}
+
 <p>Step 3:
+
 {% img http://i.imgur.com/xdxKDhp.png %}
+
 <p>Step 4: [click Start attack]
+
 {% img http://i.imgur.com/fDSs52l.png %}
 
 <p>After the step 4 process is completed check the Length Field where you will notice the difference about the successful Bruteforce login. For example for username `sa` and Password `Cisco` the Length is `4083` and status code is 200 ok, but don't blindly confirm with the status code check for other values too. So the Original value for the Username and password filed is `root`: `attack`. After finding valid user credentials we loaded then manually through the url and see what we found 
@@ -185,9 +192,11 @@ Later we did a intercept using Burp and we send the request to the Repeater we s
 {% img http://i.imgur.com/lgpjRo0.png %}
 
 <p>Decoding
+
 {% img http://i.imgur.com/JCC5KkZ.png %}
 
 <p>Follow up URL
+
 {% img http://i.imgur.com/k6M9LOW.png %}
 
 * **CTF Flag for Level-11: [infosec_flagis_powerslide]**
