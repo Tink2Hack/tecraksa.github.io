@@ -240,10 +240,12 @@
 
 <p><img src="http://i.imgur.com/n6Dp17F.png"></p>
 
-<p><figure class='code'><figcaption><span>Note</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">To</span> <span class="n">know</span> <span class="n">more</span> <span class="n">abot</span> <span class="n">objdump</span> <span class="n">kidnly</span> <span class="n">refer</span> <span class="sb"><code>reverse engineering books</code></span> <span class="n">available</span> <span class="n">from</span> <span class="no">Amazon</span><span class="o">.</span><span class="n">com</span> <span class="o">.</span>
-</span></code></pre></td></tr></table></div></figure>
-* <strong>CTF Flag for Level-8: [infosec_flagis_0x1a]</strong></p>
+<h1>Note: To know more abot objdump kidnly refer <code>reverse engineering books</code> available from Amazon.com.</h1>
+
+<ul>
+<li><strong>CTF Flag for Level-8: [infosec_flagis_0x1a]</strong></li>
+</ul>
+
 
 <h2>Level-9</h2>
 
@@ -253,17 +255,14 @@
 
 <p><p>Contains a CISCO WEB -IDS login page. At initial stage we were doing some sql injection attacks nothing was working out. So whenever a user is buying a new device it might have a default username and password pre-configured. So we created a default Username and passowrd list for doing the automated Bruteforce thing. We intercepted the request into Burp and forwarded the request to the Burp-Intruder module, then select Username and password field and set the options as shown in below figures and then select the Payloads tab and load the Username and password list and hit <code>start-attack</code>.</p>
 
-<ul>
-<li>Step 1:
-<img src="http://i.imgur.com/rqfTp1X.png"></li>
-<li>Step 2:
-<img src="http://i.imgur.com/lqbSmCH.png"></li>
-<li>Step 3:
-<img src="http://i.imgur.com/xdxKDhp.png"></li>
-<li>Step 4: [click Start attack]
-<img src="http://i.imgur.com/fDSs52l.png"></li>
-</ul>
-
+<p><p>Step 1:
+<img src="http://i.imgur.com/rqfTp1X.png">
+<p>Step 2:
+<img src="http://i.imgur.com/lqbSmCH.png">
+<p>Step 3:
+<img src="http://i.imgur.com/xdxKDhp.png">
+<p>Step 4: [click Start attack]
+<img src="http://i.imgur.com/fDSs52l.png"></p>
 
 <p><p>After the step 4 process is completed check the Length Field where you will notice the difference about the successful Bruteforce login. For example for username <code>sa</code> and Password <code>Cisco</code> the Length is <code>4083</code> and status code is 200 ok, but don&rsquo;t blindly confirm with the status code check for other values too. So the Original value for the Username and password filed is <code>root</code>: <code>attack</code>. After finding valid user credentials we loaded then manually through the url and see what we found</p>
 
@@ -305,12 +304,14 @@
 
 <p><img src="http://i.imgur.com/lgpjRo0.png"></p>
 
+<p><p>Decoding
+<img src="http://i.imgur.com/JCC5KkZ.png"></p>
+
+<p><p>Follow up URL
+<img src="http://i.imgur.com/k6M9LOW.png"></p>
+
 <ul>
-<li><p>Decoding
-<img src="http://i.imgur.com/JCC5KkZ.png"></p></li>
-<li><p>Follow up URL
-<img src="http://i.imgur.com/k6M9LOW.png"></p></li>
-<li><p><strong>CTF Flag for Level-11: [infosec_flagis_powerslide]</strong></p></li>
+<li><strong>CTF Flag for Level-11: [infosec_flagis_powerslide]</strong></li>
 </ul>
 
 
