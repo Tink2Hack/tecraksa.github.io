@@ -1,0 +1,259 @@
+---
+layout: post
+title: "n00bs CTF"
+date: 2015-03-15 21:02:18 +0530
+comments: true
+categories: 
+- CTF
+- Infosec-Institute
+---
+<p>n00bs CTF (Capture the Flag) Labs is a web application presented by Infosec Institute. It has 15 mini Capture the Flag challenges intended for beginners and newbies in the information security field or for any average infosec enthusiasts who haven’t attended hacker conventions yet.
+
+* **Author: [D.S.Sellva Manoj]**
+* **Series: [n00bs CTF by Infosec Institute]**
+
+##Tools Used
+* Kali Linux [Can be found in kali.org]
+* BurpSuite Pro [Can be found in portswigger.net]
+
+
+## Level-1
+##Walkthrough
+
+{% img http://i.imgur.com/BkcR8y0.png %}
+
+<p>After Reading the CTF Rules with an energy i entered into the `Level-1`. Where i Found an little Alien Image and below the image there was a description May the `source` be with you!. Initially what i did was i didnt notice the hint `source` i booted my Burp-professional and crafted the request and sent it to the Repeater module and hitted the `go` button and in some miliseconds i got response. Kindly take a look at the below image.
+
+{% img http://i.imgur.com/Xv5R0Oe.png %}
+
+<p>If you see the above image we got an 200 ok, also if you  notice the Raw response  we found a Commented line as `<!-- infosec_flagis_welcome -->`, so we manually went into all the levels and did a `View Page Source` none of the levels were having this comment header at the starting. Thing we learnt here is `Dont be in a Hurry`. Cool Finally we conclude that the commented header is the Level-1 Flag.
+
+* **CTF Flag for Level-1: [infosec_flagis_welcome]**
+
+## Level-2
+##Walkthrough
+
+{% img http://i.imgur.com/xnnyEWA.png %}
+
+<p>Level-2 was having some broken image file. Here is how i got the Level-2 Flag. First i Crafted the request into Burp which is shown below
+
+{% img http://i.imgur.com/Qn9QuZL.png %}
+
+<p>After crafting the request we did a Forward in Burp to move on to next request shown below.
+
+{% img http://i.imgur.com/DNQ5d27.png %}
+
+<p>Where we found a GET Reuqest for Leveltwo.jpeg file which was broken. Then we sent this GET request to Repeater, where we got repsonse along with some Base64 encoded value as shown in the below Image.
+
+{% img http://i.imgur.com/KvRorbH.png %}
+
+<p>Later on getting response, our personal intension is to gain a Flag!!! So i was having a doubt why we got response with a Base64 value so to clear my doubt i cpoied the Base64 value and Decoded it using Burp Decoder and this `infosec_flagis_wearejuststarting` was the decoded value. Successfully we gained the Level-2 FLag. 
+
+{% img http://i.imgur.com/CZTgo0a.png %}
+
+* **CTF Flag for Level-2: [infosec_flagis_wearejuststarting]**
+
+## Level-3
+## Walkthrough
+
+{% img http://i.imgur.com/Mz5fRDs.png %}
+
+<p>To be frank im a great lover of QR Code scanning, Because we use Authy, Google-authenticator for 2-Factor authentication. So so after entering into level-3i saw this OR code and took my Samsung-S5 and scanned the QR Code it popped me nothing found. I didnt give up so i googled for some online Barcode reader cum Decoder and found a linkfor decoding the QR code. So i downloaded the QR code and uploaded into the online reader/Decoder to find whats inside the QR code.
+
+{% img http://i.imgur.com/YwTox0c.png %}
+
+The online Reader/Decoder Decoded the QR value and we found Morse coding values. So We again found a side for More Translator for Transalating the Vlaues
+
+{% img http://i.imgur.com/7USil9m.png %}
+
+After translating the Morse Code i was shocked!!!!! the QR Image was embedded with the Level-3 Flag `INFOSECFLAGISMORSING` Voila we finally got the flag.
+
+* **CTF Flag for Level-3: [INFOSECFLAGISMORSING]**
+
+## Level-4
+## Walkthrough
+
+{% img  http://i.imgur.com/mXLQMcI.png %}
+
+<p>Poping into Level -4. When i loaded the page there was a image along with a description was in Level-1. So initially saw the Description its was stating the HTTP expansion. When i did a mouseover on the image it was alerting me `stop poking me` so loaded the Burp and intercepted the levelfour.php page request and sent it to repeater where i got a response along with a Cookie value named `Set-Cookie`. This seems unusual because if you see the request page at left sideyou could notice the same Cookie value assigned for levelfour.php, so each and every time if you load the page your cookie values gets changed but this value was stable and unique. Initially i copied the Cookie value and pasted it in the Burp -> Decoder and did a smartdecode and manual decode there but nothing was reflected. Later for sometime we were analyzing the cookie value and we noticed underscores. Basically If you do any encryption the underscore will also be encrypted but in this case underscore remains the same. So we did some Cryptanalysis and found the strings were substituted based on ROT-13 algorithm where the underscores are not considered to rotate 13 chars. So we cracked the Value using online ROT-13 online Decoder and successfully gained the Flag `infosec_flagis_welovecookies`.
+
+{% img http://i.imgur.com/hjandI6.png %}
+
+{% img http://i.imgur.com/cAVihm7.png %}
+
+* **CTF Flag for Level-4: [infosec_flagis_welovecookies]**
+
+
+## Level-6
+## Walkthrough
+
+{% img http://i.imgur.com/lUNKoWb.png %}
+
+<p>At Level-6 we donwloaded a .pcap file which was named as `sharkfin.pcap`. After Downloading the file we opened the file using Wireshark in Kali-linux and to be really frank we had some luck because to analyze the .pcap file you need to be very calm and steady. The luck was, after we opened the file we made a right click on the first packet stream and did a Followup UPD stream. After doing this we got some HEX values with 44bytes long.
+
+{% img http://i.imgur.com/597Bt0L.png %}
+
+Then after the followup stream we copied those Hex values and made a Hex to Char conversion online and the converted strings was the Level-6 CTF flag `infosec_flagis_sniffed`.
+
+{% img http://i.imgur.com/NRZGnTS.png %}
+
+* **CTF Flag for Level-6: [infosec_flagis_sniffed]**
+
+## Level-7
+## Walkthrough
+
+{% img http://i.imgur.com/N2WEvCt.png %}
+
+<p>When i initially browsed to Level-7 page the above page was shown to me. we noticed the url was 404.php so we thought the page is being redirected, whenever we click the level-7 tab in levels() page is redirected to 404.php but this was not the case. Initally i dropped and moved on to later levels. I found the levelseven.php at level-15 from `/var/www/html`
+
+{% img http://i.imgur.com/DKHc8uQ.png %}
+
+So after finding the levelseven.php page from level-15, we browsed to the page and we noticed a blank page
+
+{% img http://i.imgur.com/Nv0wQxI.png %}
+
+Later we did a intercept using Burp and we send the request to the Repeater we saw the response page with a 200 ok along with a base64 encoded value following up with the HTTP headers. So we decoded the value and Gained the Level-7 Flag `infosec_flagis_youfoundit `
+
+{% img http://i.imgur.com/6nIRd1W.png %}
+
+{% img http://i.imgur.com/QXOlaUQ.png %}
+
+* **CTF Flag for Level-7: [infosec_flagis_youfoundit]**
+
+## Level-8
+## walkthrough
+
+{% img http://i.imgur.com/yGn5Oka.png %}
+
+<p>Level-8 was a cake walk for because of my OSCP. Initally we downloaded the app.exe file and decompiled the app.exe file using `OBJDUMP` and gained the Level-8 flag `infosec_flagis_0x1a`
+
+{% img http://i.imgur.com/lkJYFGc.png %}
+
+{% img http://i.imgur.com/n6Dp17F.png %}
+
+``` ruby Note
+To know more abot objdump kidnly refer `reverse engineering books` available from Amazon.com .
+```
+* **CTF Flag for Level-8: [infosec_flagis_0x1a]**
+
+## Level-9
+## Walkthrough
+
+{% img http://i.imgur.com/wMGBTh3.png %}
+
+<p>Contains a CISCO WEB -IDS login page. At initial stage we were doing some sql injection attacks nothing was working out. So whenever a user is buying a new device it might have a default username and password pre-configured. So we created a default Username and passowrd list for doing the automated Bruteforce thing. We intercepted the request into Burp and forwarded the request to the Burp-Intruder module, then select Username and password field and set the options as shown in below figures and then select the Payloads tab and load the Username and password list and hit `start-attack`.
+
+- Step 1:
+{% img http://i.imgur.com/rqfTp1X.png %}
+- Step 2:
+{% img http://i.imgur.com/lqbSmCH.png %}
+- Step 3:
+{% img http://i.imgur.com/xdxKDhp.png %}
+- Step 4: [click Start attack]
+{% img http://i.imgur.com/fDSs52l.png %}
+
+<p>After the step 4 process is completed check the Length Field where you will notice the difference about the successful Bruteforce login. For example for username `sa` and Password `Cisco` the Length is `4083` and status code is 200 ok, but don't blindly confirm with the status code check for other values too. So the Original value for the Username and password filed is `root`: `attack`. After finding valid user credentials we loaded then manually through the url and see what we found 
+
+{% img http://i.imgur.com/TN6E2GV.png %}
+
+<p>we got an alert box with a Reverse_string value which is actually the Level-9 Flag `ssaptluafed_sigalf_cesofni` alias `infosec_flagis_defaultpass`
+
+{% img http://i.imgur.com/7aXtzAL.png %}
+
+* **CTF Flag for Level-9: [infosec_flagis_defaultpass]** 
+
+## Level-10
+## Walkthrough
+
+{% img http://i.imgur.com/LR9fTbk.png %}
+
+<p>You ca see the Description when you get-into level-10. ` what kind of sound is this?` so if you note here sound is the hint. Initally we downloaded the file `Flag.wav` and we initially opened in VLC media player the audio was so noisy and we didnt hear it properly, so we went to playback tab and reduced the sound and even though we were not able to get a clear voice. We downloaded a wave editor called `Wavepad` where we reduced the Pitch & Speed under the effects tab. After the reduction we were closely successful! eventhough some noisy was there, so again we reduced the speed,pitch and semitones to some extent and made a preview .... VOila we got a clear audio it vocaled us the Level-10 Flag `infosec_flagis_sound`
+
+* **CTF Flag for Level-10: [infosec_flagis_sound]**
+
+## Level-11
+## Walkthrough
+
+{% img http://i.imgur.com/yZHVRqg.png %}
+
+<p>At the inital stage after the page got loaded i thought this page has two flags to be captured, but after viewing the description there is no sound file inside the page, instead there were two image file `lol.gif` and `php-logo-virus.jpg` . How you know?..... We did a Inspect element using Firebug
+
+{% img http://i.imgur.com/y45L36K.png %}
+
+<p>After the above identification we downloaded both the files, and started to do analysis on both the image files using UNIX `Strings` command which will output whatever text from a binary file. So we ran `Strings lol.gif | grep infosec` ---> nothing reflected, then we moved on to the second image ` Strings php-logo-virus.jpg | grep infosec` --> where we were reflected with the flag along with base64 values. After Decoding the values we gained a valid url link, so we followed the link it showed us the `Powerslide` image so my guess for this flag might be `infosec_flagis_powerslide`. 
+
+{% img http://i.imgur.com/lgpjRo0.png %}
+
+- Decoding
+{% img http://i.imgur.com/JCC5KkZ.png %}
+
+- Follow up URL
+{% img http://i.imgur.com/k6M9LOW.png %}
+
+* **CTF Flag for Level-11: [infosec_flagis_powerslide]**
+
+## Level-12
+## Walkthrough
+
+{% img http://i.imgur.com/GdzafXD.png %}
+
+<p> This level made me to drink so many redbull's. For writing the blog is easy but the way i found it was very difficult. Good work by Infosec Team.
+Initially if you see this page it will be a look alike of the level-1 page only difference is the Description. `Dig Deeper` so from here we started to view the page source nothing much was found looks normal. we copied the level-12 source and level-1 source code and made a difference check online 
+
+{% img http://i.imgur.com/S0iuzB6.png %}
+
+where the difference was in CSS(Cascading Style Sheets) `design.css`. so we used the Web_developer Firefox_addon to find what's inside the css.
+
+{% img http://i.imgur.com/sTZYiLc.png %}
+
+Here if you notice the design.css file contains some unwanted HEX values, where we converted the HEX values into String through online Hex to String Converterfinally we found the Level-12 Flag `infosec_flagis_heyimnotacolor`
+
+{% img http://i.imgur.com/6mPydVg.png %}
+
+* **CTF Flag for Level-12: [infosec_flagis_heyimnotacolor]**
+
+## Level-13
+## Walkthrough
+
+{% img http://i.imgur.com/4f35E9o.png %}
+
+<p>When we loaded the level-13 page we didnt even found anyhting to download just a blank page with a huge description. I read the description again and again, what i noticed was that the challege is gone , Can you check if you can find the backup file for this one? blah blah blah ..... For me again the level-15 helped me, we did a change directory to `/var/www/html` and found the old file `levelthirteen.php.old`
+
+{% img http://i.imgur.com/He3Bocy.png %}
+
+After finding the old file we loaded it into the url and it poped us to download this file. 
+
+{% img http://i.imgur.com/OHIwZyA.png %}
+
+After the download was successful, we tried to open the file using the Web-browser where we found a page without any css designs as shown below
+
+{% img http://i.imgur.com/YL49f85.png %}
+
+If you notice the page you will find a description stating `Do you want to download this Mysterious File` we gave `yes` and a newtab was opened along with a new url link ( which was a HREF link) 
+
+{% img http://i.imgur.com/rdOsLqp.png %}
+
+After getting this link we copied the `/misc/imadecoy` and downloaded the `imadecoy` file. Actually the imadecoy file was with blank extension. Basically we use Kali for my official testing purpose after we downloaded the file it automatically opened in wireshark so this was a pcap file ( I was having pure luck). Recently we found an online PCAP web Perfomance Analyzer tool where we uploaded the imadecoy file and started to analyze the file. Where we some GET requests for image files 
+
+{% img http://i.imgur.com/tfWBaVl.png %}
+
+Then we loaded the same file into wireshark and we downloaded all the files into our local machine and see what we got
+
+{% img http://i.imgur.com/1pm1CpC.png %}
+
+We got the level-13 Flag `infosec_flagis_morepackets`
+
+* **CTF Flag for Level-13: [infosec_flagis_morepackets]**
+
+## Level-14
+## Walkthrough
+
+{% img http://i.imgur.com/QbmSBJQ.png %}
+<p> This Level seriously took my breath away because its a Database File where we did some through analysis which took us some 35 minutes. Because to be frank im not a coder or a database admin so it took me so much time. What we found was that while scrolling down each dumping items in Friends table there were some Unicode strings  under `name` field for `id:104` of table `friends`. Usually Db dosent create such value directly!!!!..... SOmething Fissssshhhhhy... we copied the entire string and decoded using online unicode convertor. After Converting Unicode values clean the `\` before each character. 
+
+{% img http://i.imgur.com/tui8GV2.png %}
+
+{% img http://i.imgur.com/ThlMlct.png %}
+
+* **CTF Flag for Level-14: [infosec_flagis_whatsorceryisthis]**
+
