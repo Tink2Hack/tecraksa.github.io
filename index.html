@@ -214,7 +214,7 @@
 <p><img src="http://i.imgur.com/zdvfjkU.png"></p>
 
 <ul>
-<li><strong>* </strong>CTF Flag for Level-5: [infosec_flagis_stegaliens]**</li>
+<li><strong>CTF Flag for Level-5: [infosec_flagis_stegaliens]</strong></li>
 </ul>
 
 
@@ -439,9 +439,32 @@ Initially if you see this page it will be a look alike of the level-1 page only 
 
 <h2>Walkthrough</h2>
 
-<p>Error processing input, expected syntax: {% img [class name(s)] [http[s]:/]/path/to/image [width [height]] [title text | &ldquo;title text&rdquo; [&ldquo;alt text&rdquo;]] %}</p>
+<p><img src="http://i.imgur.com/H5Ny161.png"></p>
 
-<p>This level contains a DNS lookup command which is integrated with <code>Dig</code> command, where it retrives the <code>ns &amp; mx</code> record if you give any domain name inside the dns lookup field. And also if you notice this page is vulnerable to command injection.</p>
+<p>This level contains a DNS lookup command which is integrated with <code>Dig</code> command, where it retrives the <code>ns &amp; mx</code> record if you give any domain name inside the dns lookup field. And also if you notice this page is vulnerable to command injection. Initially i did a <code>| ls -la</code> command and saw two file <code>.hey &amp; index.php</code> so i did cat on both the files <code>index.php</code> reflected with the same levelfifteen.php page and <code>.hey</code> gave me some unknown characters <code>Miux+mT6Kkcx+IhyMjTFnxT6KjAa+i6ZLibC</code> definetly this string is not the flag because if you see there are <code>+</code> between the characters.</p>
+
+<p><img src="http://i.imgur.com/9B08Pps.png"></p>
+
+<p><img src="http://i.imgur.com/4NLa2fQ.png"></p>
+
+<p>We tried to decrypt the string with many algorithm but failed to get the flag. so we moved on to see what&rsquo;s inside <code>/var/www/</code> when we did a change directory using <code>&amp;&amp; cd ../../../../../var/www/html &amp;&amp; ls</code></p>
+
+<p><img src="http://i.imgur.com/N4JPPzW.png"></p>
+
+<p>If you see that there is a <code>img</code>, <code>misc</code> directory where some of the levels were having link to these directories so we enterted those directories to find if something we could find interestingly. From the <code>img</code> diretory we found this <code>17oskq9jniazojpg.jpg</code> jpeg file, so we did many analysis and this image was found to be a stegno image so when we did a stegdecode it was asking me for the passphrase and we tried to crack the passphrase and we were not successful. Then when we found a <code>Readme.wav</code> from the /misc directory which was not related to any level so we downloaded it.</p>
+
+<p><img src="http://i.imgur.com/4h00YQr.png"></p>
+
+<p>After we downloaded the file we started to listen, initially we heard so many Beeping sounds. It didnt strike me that its a Audio Morse code. After identifyint that its Morsecode we decoded the sound value with the help of <code>Morse View</code> windows based morse code decoder <code>[.. -. ..-. --- ... . -.-. ..-. .-.. .- --. .. ... -- --- .-. ... . -.-. --- -.. . - --- -. . ...]</code>. Finally we got a Flag called <code>Infosec_flagis_morsecodetones</code>. But we are not sure that this flag is the one for Level-15 because here we have DNS lookup but the flag is Morsecode. So Im Searching for the flag if anybody got the flag please comment me&hellip;..</p>
+
+<ul>
+<li><strong>CTF Flag for Level-15: [???Infosec_flagis_morsecodetones???]</strong></li>
+</ul>
+
+
+<p>Im keep on digging into all directories hope for the best.</p>
+
+<p><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>THE END</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>********</p>
 </div>
   
   
@@ -891,7 +914,7 @@ Later we created a new directory for mounting to the NFS export and add our key 
 </span><span class='line'><span class="n">root</span><span class="vi">@Hacker</span><span class="ss">:~</span><span class="c1"># cat ~/.ssh/id_rsa.pub &gt;&gt; /tmp/dsm/root/.ssh/authorized_keys</span>
 </span><span class='line'>
 </span><span class='line'><span class="o">&mdash;&gt;</span> <span class="no">Finally</span> <span class="no">Do</span> <span class="n">the</span> <span class="n">ssh</span>
-</span><span class='line'><span class="n">root</span><span class="vi">@Hacker</span><span class="ss">:~</span><span class="c1"># ssh <a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#x6f;&#58;&#x72;&#111;&#x6f;&#116;&#x40;&#x31;&#x39;&#x32;&#x2e;&#49;&#x36;&#56;&#x2e;&#50;&#x2e;&#x37;">&#x72;&#111;&#x6f;&#116;&#64;&#x31;&#x39;&#x32;&#46;&#x31;&#54;&#x38;&#x2e;&#x32;&#x2e;&#55;</a></span>
+</span><span class='line'><span class="n">root</span><span class="vi">@Hacker</span><span class="ss">:~</span><span class="c1"># ssh <a href="&#109;&#x61;&#x69;&#108;&#x74;&#111;&#x3a;&#114;&#x6f;&#111;&#116;&#64;&#x31;&#57;&#x32;&#46;&#x31;&#54;&#56;&#46;&#50;&#x2e;&#55;">&#x72;&#111;&#x6f;&#116;&#64;&#49;&#57;&#50;&#x2e;&#x31;&#x36;&#x38;&#x2e;&#50;&#46;&#x37;</a></span>
 </span><span class='line'><span class="no">Last</span> <span class="ss">login</span><span class="p">:</span> <span class="no">Sun</span> <span class="no">Aug</span> <span class="mi">24</span> <span class="mi">22</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">44</span> <span class="mi">2014</span> <span class="n">from</span> <span class="p">:</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span>
 </span><span class='line'><span class="no">Linux</span> <span class="n">metasploitable</span> <span class="mi">2</span><span class="o">.</span><span class="mi">6</span><span class="o">.</span><span class="mi">24</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="n">server</span> <span class="c1">#1 SMP Thu Apr 10 13:58:00 UTC 2008 i686</span>
 </span><span class='line'>

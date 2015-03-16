@@ -211,7 +211,7 @@
 <p><img src="http://i.imgur.com/zdvfjkU.png"></p>
 
 <ul>
-<li><strong>* </strong>CTF Flag for Level-5: [infosec_flagis_stegaliens]**</li>
+<li><strong>CTF Flag for Level-5: [infosec_flagis_stegaliens]</strong></li>
 </ul>
 
 
@@ -436,9 +436,32 @@ Initially if you see this page it will be a look alike of the level-1 page only 
 
 <h2>Walkthrough</h2>
 
-<p>Error processing input, expected syntax: {% img [class name(s)] [http[s]:/]/path/to/image [width [height]] [title text | &ldquo;title text&rdquo; [&ldquo;alt text&rdquo;]] %}</p>
+<p><img src="http://i.imgur.com/H5Ny161.png"></p>
 
-<p>This level contains a DNS lookup command which is integrated with <code>Dig</code> command, where it retrives the <code>ns &amp; mx</code> record if you give any domain name inside the dns lookup field. And also if you notice this page is vulnerable to command injection.</p>
+<p>This level contains a DNS lookup command which is integrated with <code>Dig</code> command, where it retrives the <code>ns &amp; mx</code> record if you give any domain name inside the dns lookup field. And also if you notice this page is vulnerable to command injection. Initially i did a <code>| ls -la</code> command and saw two file <code>.hey &amp; index.php</code> so i did cat on both the files <code>index.php</code> reflected with the same levelfifteen.php page and <code>.hey</code> gave me some unknown characters <code>Miux+mT6Kkcx+IhyMjTFnxT6KjAa+i6ZLibC</code> definetly this string is not the flag because if you see there are <code>+</code> between the characters.</p>
+
+<p><img src="http://i.imgur.com/9B08Pps.png"></p>
+
+<p><img src="http://i.imgur.com/4NLa2fQ.png"></p>
+
+<p>We tried to decrypt the string with many algorithm but failed to get the flag. so we moved on to see what&rsquo;s inside <code>/var/www/</code> when we did a change directory using <code>&amp;&amp; cd ../../../../../var/www/html &amp;&amp; ls</code></p>
+
+<p><img src="http://i.imgur.com/N4JPPzW.png"></p>
+
+<p>If you see that there is a <code>img</code>, <code>misc</code> directory where some of the levels were having link to these directories so we enterted those directories to find if something we could find interestingly. From the <code>img</code> diretory we found this <code>17oskq9jniazojpg.jpg</code> jpeg file, so we did many analysis and this image was found to be a stegno image so when we did a stegdecode it was asking me for the passphrase and we tried to crack the passphrase and we were not successful. Then when we found a <code>Readme.wav</code> from the /misc directory which was not related to any level so we downloaded it.</p>
+
+<p><img src="http://i.imgur.com/4h00YQr.png"></p>
+
+<p>After we downloaded the file we started to listen, initially we heard so many Beeping sounds. It didnt strike me that its a Audio Morse code. After identifyint that its Morsecode we decoded the sound value with the help of <code>Morse View</code> windows based morse code decoder <code>[.. -. ..-. --- ... . -.-. ..-. .-.. .- --. .. ... -- --- .-. ... . -.-. --- -.. . - --- -. . ...]</code>. Finally we got a Flag called <code>Infosec_flagis_morsecodetones</code>. But we are not sure that this flag is the one for Level-15 because here we have DNS lookup but the flag is Morsecode. So Im Searching for the flag if anybody got the flag please comment me&hellip;..</p>
+
+<ul>
+<li><strong>CTF Flag for Level-15: [???Infosec_flagis_morsecodetones???]</strong></li>
+</ul>
+
+
+<p>Im keep on digging into all directories hope for the best.</p>
+
+<p><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>THE END</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>********</p>
 </div>
 
 
