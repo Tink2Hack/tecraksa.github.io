@@ -90,7 +90,7 @@
 
 <ul>
 <li><strong>Author: [D.S.Sellva Manoj]</strong></li>
-<li><strong>Series: [n00bs CTF by Infosec Institute]</strong></li>
+<li><strong>Series: [<a href="http://ctf.infosecinstitute.com">n00bs CTF by Infosec Institute</a>]</strong></li>
 </ul>
 
 
@@ -181,6 +181,37 @@
 
 <ul>
 <li><strong>CTF Flag for Level-4: [infosec_flagis_welovecookies]</strong></li>
+</ul>
+
+
+<h2>Level-5</h2>
+
+<h2>Walkthrough</h2>
+
+<p><p>Initially when we visit the levelfive.php page an xss alert were kept on popping up. So what we did is we ope <code>checked</code> the <code>Prevent this page from creating additional dialogs</code>.</p>
+
+<p><img src="http://i.imgur.com/m6LKR3s.png"></p>
+
+<p>Then after preventing the alert box, we did a Inspect element with Firebug and found a broken image file named <code>aliens.jpg</code> under a folder <code>/img</code>.</p>
+
+<p><img src="http://i.imgur.com/TB82fIV.png"></p>
+
+<p>After finding the image file we donwloaded it and opened to view if there is any flag inside the file. But we were wrong, the image showed us nothig but with some funny character with some text inside the image.</p>
+
+<p><img src="http://i.imgur.com/96dh5yT.png"></p>
+
+<p>Later on we started to analyze the image with may commands to grep out the Flag but nothing was working out. And if you notice that the image was not having any metadata listed, no author name, iso rating , focal length etc&hellip;. after noticing this we thought that this image might be a stegno image. So we went online for decoding the stegno image</p>
+
+<p><img src="http://i.imgur.com/igKiDXF.png"></p>
+
+<p><img src="http://i.imgur.com/xZTwYKq.png"></p>
+
+<p>If you notice the second image you could see some lengthy binary bits which confirms that the image contains some text inside. We doubted correctly!!!! the alien.jpg image is a Stegno image. After this confirmation we copied the binary value and and converted the binary to string to gain the Level-5 flag <code>infosec_flagis_stegaliens</code></p>
+
+<p><img src="http://i.imgur.com/zdvfjkU.png"></p>
+
+<ul>
+<li><strong>* </strong>CTF Flag for Level-5: [infosec_flagis_stegaliens]**</li>
 </ul>
 
 
@@ -400,6 +431,14 @@ Initially if you see this page it will be a look alike of the level-1 page only 
 <li><strong>CTF Flag for Level-14: [infosec_flagis_whatsorceryisthis]</strong></li>
 </ul>
 
+
+<h2>Level-15</h2>
+
+<h2>Walkthrough</h2>
+
+<p>Error processing input, expected syntax: {% img [class name(s)] [http[s]:/]/path/to/image [width [height]] [title text | &ldquo;title text&rdquo; [&ldquo;alt text&rdquo;]] %}</p>
+
+<p>This level contains a DNS lookup command which is integrated with <code>Dig</code> command, where it retrives the <code>ns &amp; mx</code> record if you give any domain name inside the dns lookup field. And also if you notice this page is vulnerable to command injection.</p>
 </div>
 
 
