@@ -110,7 +110,7 @@ If you notice the second image you could see some lengthy binary bits which conf
 
 {% img http://i.imgur.com/zdvfjkU.png %}
 
-* *** **CTF Flag for Level-5: [infosec_flagis_stegaliens]** 
+* **CTF Flag for Level-5: [infosec_flagis_stegaliens]** 
 
 ## Level-6
 ## Walkthrough
@@ -297,6 +297,27 @@ We got the level-13 Flag `infosec_flagis_morepackets`
 ## Level-15
 ## Walkthrough
 
-{% img %}
+{% img http://i.imgur.com/H5Ny161.png %}
 
-This level contains a DNS lookup command which is integrated with `Dig` command, where it retrives the `ns & mx` record if you give any domain name inside the dns lookup field. And also if you notice this page is vulnerable to command injection.
+This level contains a DNS lookup command which is integrated with `Dig` command, where it retrives the `ns & mx` record if you give any domain name inside the dns lookup field. And also if you notice this page is vulnerable to command injection. Initially i did a `| ls -la` command and saw two file ` .hey & index.php` so i did cat on both the files `index.php` reflected with the same levelfifteen.php page and `.hey` gave me some unknown characters `Miux+mT6Kkcx+IhyMjTFnxT6KjAa+i6ZLibC` definetly this string is not the flag because if you see there are `+` between the characters. 
+
+{% img http://i.imgur.com/9B08Pps.png %}
+
+{% img http://i.imgur.com/4NLa2fQ.png %}
+
+We tried to decrypt the string with many algorithm but failed to get the flag. so we moved on to see what's inside `/var/www/` when we did a change directory using `&& cd ../../../../../var/www/html && ls`
+
+{% img http://i.imgur.com/N4JPPzW.png %} 
+
+If you see that there is a `img`, `misc` directory where some of the levels were having link to these directories so we enterted those directories to find if something we could find interestingly. From the `img` diretory we found this `17oskq9jniazojpg.jpg` jpeg file, so we did many analysis and this image was found to be a stegno image so when we did a stegdecode it was asking me for the passphrase and we tried to crack the passphrase and we were not successful. Then when we found a `Readme.wav` from the /misc directory which was not related to any level so we downloaded it. 
+
+{% img http://i.imgur.com/4h00YQr.png %}
+
+After we downloaded the file we started to listen, initially we heard so many Beeping sounds. It didnt strike me that its a Audio Morse code. After identifyint that its Morsecode we decoded the sound value with the help of `Morse View` windows based morse code decoder `[.. -. ..-. --- ... . -.-. ..-. .-.. .- --. .. ... -- --- .-. ... . -.-. --- -.. . - --- -. . ...]`. Finally we got a Flag called `Infosec_flagis_morsecodetones`. But we are not sure that this flag is the one for Level-15 because here we have DNS lookup but the flag is Morsecode. So Im Searching for the flag if anybody got the flag please comment me.....
+
+
+* **CTF Flag for Level-15: [???Infosec_flagis_morsecodetones???]** 
+
+Im keep on digging into all directories hope for the best. 
+
+***********************************************************************THE END*******************************************************************************
