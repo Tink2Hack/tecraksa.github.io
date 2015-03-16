@@ -10,9 +10,10 @@ categories:
 <p>n00bs CTF (Capture the Flag) Labs is a web application presented by Infosec Institute. It has 15 mini Capture the Flag challenges intended for beginners and newbies in the information security field or for any average infosec enthusiasts who haven’t attended hacker conventions yet.
 
 * **Author: [D.S.Sellva Manoj]**
-* **Series: [n00bs CTF by Infosec Institute]**
+* **Series: [[n00bs CTF by Infosec Institute](http://ctf.infosecinstitute.com)]**
 
 ##Tools Used
+
 * Kali Linux [Can be found in kali.org]
 * BurpSuite Pro [Can be found in portswigger.net]
 
@@ -83,6 +84,33 @@ After translating the Morse Code i was shocked!!!!! the QR Image was embedded wi
 
 * **CTF Flag for Level-4: [infosec_flagis_welovecookies]**
 
+
+## Level-5
+## Walkthrough
+
+<p>Initially when we visit the levelfive.php page an xss alert were kept on popping up. So what we did is we ope `checked` the `Prevent this page from creating additional dialogs`. 
+
+{% img http://i.imgur.com/m6LKR3s.png %}
+
+Then after preventing the alert box, we did a Inspect element with Firebug and found a broken image file named `aliens.jpg` under a folder `/img`.
+
+{% img http://i.imgur.com/TB82fIV.png %}
+
+After finding the image file we donwloaded it and opened to view if there is any flag inside the file. But we were wrong, the image showed us nothig but with some funny character with some text inside the image. 
+
+{% img http://i.imgur.com/96dh5yT.png %}
+
+Later on we started to analyze the image with may commands to grep out the Flag but nothing was working out. And if you notice that the image was not having any metadata listed, no author name, iso rating , focal length etc.... after noticing this we thought that this image might be a stegno image. So we went online for decoding the stegno image
+
+{% img http://i.imgur.com/igKiDXF.png %}
+
+{% img http://i.imgur.com/xZTwYKq.png %}
+
+If you notice the second image you could see some lengthy binary bits which confirms that the image contains some text inside. We doubted correctly!!!! the alien.jpg image is a Stegno image. After this confirmation we copied the binary value and and converted the binary to string to gain the Level-5 flag `infosec_flagis_stegaliens` 
+
+{% img http://i.imgur.com/zdvfjkU.png %}
+
+* *** **CTF Flag for Level-5: [infosec_flagis_stegaliens]** 
 
 ## Level-6
 ## Walkthrough
@@ -266,3 +294,9 @@ We got the level-13 Flag `infosec_flagis_morepackets`
 
 * **CTF Flag for Level-14: [infosec_flagis_whatsorceryisthis]**
 
+## Level-15
+## Walkthrough
+
+{% img %}
+
+This level contains a DNS lookup command which is integrated with `Dig` command, where it retrives the `ns & mx` record if you give any domain name inside the dns lookup field. And also if you notice this page is vulnerable to command injection.
