@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Infosec-institute | CBE-Pentester]]></title>
   <link href="http://tecraksa.github.io/blog/categories/infosec-institute/atom.xml" rel="self"/>
   <link href="http://tecraksa.github.io/"/>
-  <updated>2015-03-17T09:26:32+05:30</updated>
+  <updated>2015-03-17T09:43:13+05:30</updated>
   <id>http://tecraksa.github.io/</id>
   <author>
     <name><![CDATA[D.S.Sellva Manoj]]></name>
@@ -203,7 +203,8 @@
 
 <p><img class="<a" src="href="http://i.imgur.com/n6Dp17F.png">http://i.imgur.com/n6Dp17F.png</a>&#8221;></p>
 
-<h1>Note: To know more abot objdump kidnly refer <code>reverse engineering books</code> available from Amazon.com.</h1>
+<pre><code>Note: To know more abot objdump kidnly refer `reverse engineering books` available from Amazon.com.
+</code></pre>
 
 <ul>
 <li><strong>CTF Flag for Level-8: [infosec_flagis_0x1a]</strong></li>
@@ -397,7 +398,7 @@ Initially if you see this page it will be a look alike of the level-1 page only 
 
 <p><img class="<a" src="href="http://i.imgur.com/4h00YQr.png">http://i.imgur.com/4h00YQr.png</a>&#8221;></p>
 
-<p>After we downloaded the file we started to listen, initially we heard so many Beeping sounds. It didnt strike me that its a Audio Morse code. After identifyint that its Morsecode we decoded the sound value with the help of <code>Morse View</code> windows based morse code decoder <code>[.. -. ..-. --- ... . -.-. ..-. .-.. .- --. .. ... -- --- .-. ... . -.-. --- -.. . - --- -. . ...]</code>. Finally we got a Flag called <code>Infosec_flagis_morsecodetones</code>. But we are not sure that this flag is the one for Level-15 because here we have DNS lookup but the flag is Morsecode. So Im Searching for the flag if anybody got the flag please comment me&hellip;..</p>
+<p>After we downloaded the file we started to listen, initially we heard so many Beeping sounds. It didnt strike me that its a Audio Morse code. After identifyint that its Morsecode we decoded the sound value with the help of <code>Morse View</code> windows based morse code decoder <code>[.. -. ..-. --- ... . -.-. ..-. .-.. .- --. .. ... -- --- .-. ... . -.-. --- -.. . - --- -. . ...]</code>. Finally we got the Bonus Flag <code>Infosec_flagis_morsecodetones</code>.</p>
 
 <ul>
 <li><strong>Bonus Flag [Infosec_flagis_morsecodetones]</strong></li>
