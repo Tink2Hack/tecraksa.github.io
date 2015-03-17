@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ctf | CBE-Pentester]]></title>
   <link href="http://tecraksa.github.io/blog/categories/ctf/atom.xml" rel="self"/>
   <link href="http://tecraksa.github.io/"/>
-  <updated>2015-03-17T12:10:41+05:30</updated>
+  <updated>2015-03-17T12:15:33+05:30</updated>
   <id>http://tecraksa.github.io/</id>
   <author>
     <name><![CDATA[D.S.Sellva Manoj]]></name>
@@ -158,7 +158,7 @@
 
 <p><img class="<a" src="href="http://i.imgur.com/lUNKoWb.png">http://i.imgur.com/lUNKoWb.png</a>&#8221;></p>
 
-<p><p>At Level-6 we donwloaded a .pcap file which was named as <code>sharkfin.pcap</code>. After Downloading the file we opened the file using Wireshark in Kali-linux and to be really frank we had some luck, because to analyze a .pcap file you need to be very patience. The luck here was, after we opened the file we made a right click on the first packet stream and did a Followup UPD stream. After doing this we got some HEX values with 44bytes long.</p>
+<p><p>At Level-6 we downloaded a .pcap file which was named as <code>sharkfin.pcap</code>. After Downloading the file we opened the file using Wireshark in Kali-linux and to be really frank we had some luck, because to analyze a .pcap file you need to be very patience. The luck here was, after we opened the file we made a right click on the first packet stream and did a Followup UPD stream. After doing this we got some HEX values with 44bytes long.</p>
 
 <p><img class="<a" src="href="http://i.imgur.com/597Bt0L.png">http://i.imgur.com/597Bt0L.png</a>&#8221;></p>
 
@@ -177,7 +177,7 @@
 
 <p><img class="<a" src="href="http://i.imgur.com/N2WEvCt.png">http://i.imgur.com/N2WEvCt.png</a>&#8221;></p>
 
-<p><p>When we initally browsed to Level-7 the page was blank with a description and wiht the bounty value as shown in above image. Later we noticed the url i.e. 404.php so we thought the page is being redirected, whenever we click the level-7 tab in levels() page. But this was not the case. Initally we dropped and moved on to later levels and  we found the levelseven.php at level-15 from <code>/var/www/html</code> which is shown in below image</p>
+<p><p>When we initally browsed to Level-7 the page was blank with a description and with the bounty value as shown in above image. Later we noticed the url i.e. 404.php so we thought the page is being redirected, whenever we click the level-7 tab in levels() page. But this was not the case. Initally we dropped and moved on to later levels and  we found the levelseven.php at level-15 from <code>/var/www/html</code> which is shown in below image</p>
 
 <p><img class="<a" src="href="http://i.imgur.com/DKHc8uQ.png">http://i.imgur.com/DKHc8uQ.png</a>&#8221;></p>
 
@@ -202,7 +202,7 @@
 
 <p><img class="<a" src="href="http://i.imgur.com/yGn5Oka.png">http://i.imgur.com/yGn5Oka.png</a>&#8221;></p>
 
-<p><p>Level-8 was a cake walk for because of my OSCP. Initally we downloaded the app.exe file and decompiled the app.exe file using <code>OBJDUMP</code> and gained the Level-8 flag <code>infosec_flagis_0x1a</code></p>
+<p><p>Level-8 was a cake walk for me, because of my OSCP Certification currently obtained. Later, we downloaded the <code>app.exe</code> file and decompiled the app.exe file using <code>OBJDUMP</code> and gained the Level-8 flag <code>infosec_flagis_0x1a</code></p>
 
 <p><img class="<a" src="href="http://i.imgur.com/lkJYFGc.png">http://i.imgur.com/lkJYFGc.png</a>&#8221;></p>
 
