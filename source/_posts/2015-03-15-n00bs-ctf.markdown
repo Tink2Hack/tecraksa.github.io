@@ -122,7 +122,7 @@ If you notice the second image you could see some lengthy binary bits which conf
 
 {% img http://i.imgur.com/lUNKoWb.png %}
 
-<p>At Level-6 we donwloaded a .pcap file which was named as `sharkfin.pcap`. After Downloading the file we opened the file using Wireshark in Kali-linux and to be really frank we had some luck, because to analyze a .pcap file you need to be very patience. The luck here was, after we opened the file we made a right click on the first packet stream and did a Followup UPD stream. After doing this we got some HEX values with 44bytes long.
+<p>At Level-6 we downloaded a .pcap file which was named as `sharkfin.pcap`. After Downloading the file we opened the file using Wireshark in Kali-linux and to be really frank we had some luck, because to analyze a .pcap file you need to be very patience. The luck here was, after we opened the file we made a right click on the first packet stream and did a Followup UPD stream. After doing this we got some HEX values with 44bytes long.
 
 {% img http://i.imgur.com/597Bt0L.png %}
 
@@ -137,7 +137,7 @@ Then after the followup stream we copied those Hex values and made a Hex to Char
 
 {% img http://i.imgur.com/N2WEvCt.png %}
 
-<p>When we initally browsed to Level-7 the page was blank with a description and wiht the bounty value as shown in above image. Later we noticed the url i.e. 404.php so we thought the page is being redirected, whenever we click the level-7 tab in levels() page. But this was not the case. Initally we dropped and moved on to later levels and  we found the levelseven.php at level-15 from `/var/www/html` which is shown in below image
+<p>When we initally browsed to Level-7 the page was blank with a description and with the bounty value as shown in above image. Later we noticed the url i.e. 404.php so we thought the page is being redirected, whenever we click the level-7 tab in levels() page. But this was not the case. Initally we dropped and moved on to later levels and  we found the levelseven.php at level-15 from `/var/www/html` which is shown in below image
 
 {% img http://i.imgur.com/DKHc8uQ.png %}
 
@@ -158,7 +158,7 @@ Later we did a intercept using Burp and we sent the request to the Repeater and 
 
 {% img http://i.imgur.com/yGn5Oka.png %}
 
-<p>Level-8 was a cake walk for because of my OSCP. Initally we downloaded the app.exe file and decompiled the app.exe file using `OBJDUMP` and gained the Level-8 flag `infosec_flagis_0x1a`
+<p>Level-8 was a cake walk for me, because of my OSCP Certification currently obtained. Later, we downloaded the `app.exe` file and decompiled the app.exe file using `OBJDUMP` and gained the Level-8 flag `infosec_flagis_0x1a`
 
 {% img http://i.imgur.com/lkJYFGc.png %}
 
