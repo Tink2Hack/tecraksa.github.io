@@ -11,7 +11,7 @@ categories:
 
 So what is a CTF? In hacker conventions, CTF or Capture the Flag is a game event which has challenges that vary from exploitation, CrackMes, crypto, forensic, web security, logical games, wireless security, and many more.
 
-* **Start Capturing the Flag[[n00bs CTF by Infosec Institute(http://ctf.infosecinstitute.com)]]**
+* **Start Capturing the Flag [[n00bs CTF by Infosec Institute](http://ctf.infosecinstitute.com)]**
 
 {% img http://2we26u4fam7n16rz3a44uhbe1bq2.wpengine.netdna-cdn.com/wp-content/uploads/030915_2304_n00bsCTFLab1.png %}
 
