@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ctf | CBE-Pentester]]></title>
   <link href="http://tecraksa.github.io/blog/categories/ctf/atom.xml" rel="self"/>
   <link href="http://tecraksa.github.io/"/>
-  <updated>2015-03-17T09:43:13+05:30</updated>
+  <updated>2015-03-17T09:56:38+05:30</updated>
   <id>http://tecraksa.github.io/</id>
   <author>
     <name><![CDATA[D.S.Sellva Manoj]]></name>
@@ -31,6 +31,11 @@
 <ul>
 <li>Kali Linux [Can be found in kali.org]</li>
 <li>BurpSuite Pro [Can be found in portswigger.net]</li>
+<li>Morse-Code Translator [<a href="http://morsecode.scphillips.com/translator.html">http://morsecode.scphillips.com/translator.html</a>]</li>
+<li>BarCode Decoder [<a href="http://online-barcode-reader.inliteresearch.com/default.aspx">http://online-barcode-reader.inliteresearch.com/default.aspx</a>]</li>
+<li>ROT-13 Decoder  [<a href="http://www.decode.org/">http://www.decode.org/</a>]</li>
+<li>Hex,ASCII, Reverse String Decoder [<a href="http://string-functions.com/">http://string-functions.com/</a>]</li>
+<li>Cryto Decoder [<a href="http://crypo.in.ua/tools/">http://crypo.in.ua/tools/</a>]</li>
 </ul>
 
 
@@ -203,11 +208,9 @@
 
 <p><img class="<a" src="href="http://i.imgur.com/n6Dp17F.png">http://i.imgur.com/n6Dp17F.png</a>&#8221;></p>
 
-<pre><code>Note: To know more abot objdump kidnly refer `reverse engineering books` available from Amazon.com.
-</code></pre>
-
 <ul>
-<li><strong>CTF Flag for Level-8: [infosec_flagis_0x1a]</strong></li>
+<li><p><strong>Note:[To know more abot objdump kidnly refer <code>reverse engineering books</code> available from Amazon.com.]</strong></p></li>
+<li><p><strong>CTF Flag for Level-8: [infosec_flagis_0x1a]</strong></p></li>
 </ul>
 
 
