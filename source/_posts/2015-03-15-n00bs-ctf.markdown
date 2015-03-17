@@ -159,9 +159,10 @@ Later we did a intercept using Burp and we send the request to the Repeater we s
 
 {% img http://i.imgur.com/n6Dp17F.png %}
 
+```
+Note: To know more abot objdump kidnly refer `reverse engineering books` available from Amazon.com.
 
-# Note: To know more abot objdump kidnly refer `reverse engineering books` available from Amazon.com.
-
+```
 * **CTF Flag for Level-8: [infosec_flagis_0x1a]**
 
 ## Level-9
@@ -323,8 +324,7 @@ If you see that there is a `img`, `misc` directory where some of the levels were
 
 {% img http://i.imgur.com/4h00YQr.png %}
 
-After we downloaded the file we started to listen, initially we heard so many Beeping sounds. It didnt strike me that its a Audio Morse code. After identifyint that its Morsecode we decoded the sound value with the help of `Morse View` windows based morse code decoder `[.. -. ..-. --- ... . -.-. ..-. .-.. .- --. .. ... -- --- .-. ... . -.-. --- -.. . - --- -. . ...]`. Finally we got a Flag called `Infosec_flagis_morsecodetones`. But we are not sure that this flag is the one for Level-15 because here we have DNS lookup but the flag is Morsecode. So Im Searching for the flag if anybody got the flag please comment me.....
-
+After we downloaded the file we started to listen, initially we heard so many Beeping sounds. It didnt strike me that its a Audio Morse code. After identifyint that its Morsecode we decoded the sound value with the help of `Morse View` windows based morse code decoder `[.. -. ..-. --- ... . -.-. ..-. .-.. .- --. .. ... -- --- .-. ... . -.-. --- -.. . - --- -. . ...]`. Finally we got the Bonus Flag `Infosec_flagis_morsecodetones`.
 
 * **Bonus Flag [Infosec_flagis_morsecodetones]**
 
