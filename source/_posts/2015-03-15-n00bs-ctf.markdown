@@ -16,6 +16,11 @@ categories:
 
 * Kali Linux [Can be found in kali.org]
 * BurpSuite Pro [Can be found in portswigger.net]
+* Morse-Code Translator [http://morsecode.scphillips.com/translator.html]
+* BarCode Decoder [http://online-barcode-reader.inliteresearch.com/default.aspx]
+* ROT-13 Decoder  [http://www.decode.org/]
+* Hex,ASCII, Reverse String Decoder [http://string-functions.com/]
+* Cryto Decoder [http://crypo.in.ua/tools/]
 
 
 ## Level-1
@@ -159,10 +164,8 @@ Later we did a intercept using Burp and we send the request to the Repeater we s
 
 {% img http://i.imgur.com/n6Dp17F.png %}
 
-```
-Note: To know more abot objdump kidnly refer `reverse engineering books` available from Amazon.com.
+* **Note:[To know more abot objdump kidnly refer `reverse engineering books` available from Amazon.com.]**
 
-```
 * **CTF Flag for Level-8: [infosec_flagis_0x1a]**
 
 ## Level-9
