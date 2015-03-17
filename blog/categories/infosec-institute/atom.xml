@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Infosec-institute | CBE-Pentester]]></title>
   <link href="http://tecraksa.github.io/blog/categories/infosec-institute/atom.xml" rel="self"/>
   <link href="http://tecraksa.github.io/"/>
-  <updated>2015-03-17T10:50:11+05:30</updated>
+  <updated>2015-03-17T12:10:41+05:30</updated>
   <id>http://tecraksa.github.io/</id>
   <author>
     <name><![CDATA[D.S.Sellva Manoj]]></name>
@@ -45,11 +45,11 @@
 
 <p><img class="<a" src="href="http://i.imgur.com/BkcR8y0.png">http://i.imgur.com/BkcR8y0.png</a>&#8221;></p>
 
-<p><p>After Reading the CTF Rules with an energy i entered into the <code>Level-1</code>. Where i Found an little Alien Image and below the image there was a description May the <code>source</code> be with you!. Initially what i did was i didnt notice the hint <code>source</code> i booted my Burp-professional and crafted the request and sent it to the Repeater module and hitted the <code>go</code> button and in some miliseconds i got response. Kindly take a look at the below image.</p>
+<p><p>After Reading the CTF Rules with an energy we entered into <code>Level-1</code> to find our first Flag. After entering into <code>level-1</code> we Found an little Alien Image and below the image there was a description <code>May the source be with you!</code>. Initially we didnt notice the hint <code>source</code> so we booted  Burp-pro and crafted the request then sent it to the Repeater module and hitted the <code>go</code> button and in some miliseconds we got response shown in below image.</p>
 
 <p><img class="<a" src="href="http://i.imgur.com/Xv5R0Oe.png">http://i.imgur.com/Xv5R0Oe.png</a>&#8221;></p>
 
-<p><p>If you see the above image we got an 200 ok, also if you  notice the Raw response  we found a Commented line as <code>&lt;!-- infosec_flagis_welcome --&gt;</code>, so we manually went into all the levels and did a <code>View Page Source</code> none of the levels were having this comment header at the starting. Thing we learnt here is <code>Dont be in a Hurry</code>. Cool Finally we conclude that the commented header is the Level-1 Flag.</p>
+<p><p>If you see the response in above image, we got an 200 ok also if you  notice the Raw response you will find a Commented line as <code>&lt;!-- infosec_flagis_welcome --&gt;</code>, so we manually went into all the levels and did a <code>View Page Source</code> none of the levels were having this comment header at the starting. Cool!!!! Finally we conclude that the commented header is the Level-1 Flag.</p>
 
 <ul>
 <li><strong>CTF Flag for Level-1: [infosec_flagis_welcome]</strong></li>
@@ -62,19 +62,19 @@
 
 <p><img class="<a" src="href="http://i.imgur.com/xnnyEWA.png">http://i.imgur.com/xnnyEWA.png</a>&#8221;></p>
 
-<p><p>Level-2 was having some broken image file. Here is how i got the Level-2 Flag. First i Crafted the request into Burp which is shown below</p>
+<p><p>Level-2 was having some broken image file. Here is how we got the Level-2 Flag. First we Crafted the request into Burp which as shown below</p>
 
 <p><img class="<a" src="href="http://i.imgur.com/Qn9QuZL.png">http://i.imgur.com/Qn9QuZL.png</a>&#8221;></p>
 
-<p><p>After crafting the request we did a Forward in Burp to move on to next request shown below.</p>
+<p><p>After crafting the request we did Forward in Burp to move on to next request shown below.</p>
 
 <p><img class="<a" src="href="http://i.imgur.com/DNQ5d27.png">http://i.imgur.com/DNQ5d27.png</a>&#8221;></p>
 
-<p><p>Where we found a GET Reuqest for Leveltwo.jpeg file which was broken. Then we sent this GET request to Repeater, where we got repsonse along with some Base64 encoded value as shown in the below Image.</p>
+<p><p>Where we found GET Reuqest for Leveltwo.jpeg file which was broken. Then we sent this GET request to Repeater, where we got repsonse along with some Base64 encoded value as shown in below Image.</p>
 
 <p><img class="<a" src="href="http://i.imgur.com/KvRorbH.png">http://i.imgur.com/KvRorbH.png</a>&#8221;></p>
 
-<p><p>Later on getting response, our personal intension is to gain a Flag!!! So i was having a doubt why we got response with a Base64 value so to clear my doubt i cpoied the Base64 value and Decoded it using Burp Decoder and this <code>infosec_flagis_wearejuststarting</code> was the decoded value. Successfully we gained the Level-2 FLag.</p>
+<p><p>Later on getting response, our personal intension is to gain a Flag!!! So we were having a doubt!!! why we got response with a Base64 value?, so to clear our doubt we cpoied the Base64 value and Decoded it using Burp Decoder and this <code>infosec_flagis_wearejuststarting</code> was the decoded value. Successfully we gained the Level-2 FLag.</p>
 
 <p><img class="<a" src="href="http://i.imgur.com/CZTgo0a.png">http://i.imgur.com/CZTgo0a.png</a>&#8221;></p>
 
@@ -89,15 +89,15 @@
 
 <p><img class="<a" src="href="http://i.imgur.com/Mz5fRDs.png">http://i.imgur.com/Mz5fRDs.png</a>&#8221;></p>
 
-<p><p>To be frank im a great lover of QR Code scanning, Because we use Authy, Google-authenticator for 2-Factor authentication. So so after entering into level-3i saw this OR code and took my Samsung-S5 and scanned the QR Code it popped me nothing found. I didnt give up so i googled for some online Barcode reader cum Decoder and found a linkfor decoding the QR code. So i downloaded the QR code and uploaded into the online reader/Decoder to find whats inside the QR code.</p>
+<p><p>To be frank im a great fan of QR Code scanning. So..so.. after entering into level-3 we scanned the shown QR code using our Samsung S5, where it popped us nothing found/matched. But We didnt give up so we googled for some online Barcode Reader/Decoder and found a link for decoding the QR code. So we downloaded the QR code and uploaded into the online Reader/Decoder to find what&rsquo;s inside the QR code.</p>
 
 <p><img class="<a" src="href="http://i.imgur.com/YwTox0c.png">http://i.imgur.com/YwTox0c.png</a>&#8221;></p>
 
-<p>The online Reader/Decoder Decoded the QR value and we found Morse coding values. So We again found a side for More Translator for Transalating the Vlaues</p>
+<p>The online Reader/Decoder Decoded the QR value and we found Morse coding values. So We again found a site for More Translator for Transalating the Vlaues which is shown below</p>
 
 <p><img class="<a" src="href="http://i.imgur.com/7USil9m.png">http://i.imgur.com/7USil9m.png</a>&#8221;></p>
 
-<p>After translating the Morse Code i was shocked!!!!! the QR Image was embedded with the Level-3 Flag <code>INFOSECFLAGISMORSING</code> Voila we finally got the flag.</p>
+<p>After translating the Morse Code we were stumbelled with the result!!!!! the QR Image was embedded with Level-3 Flag <code>INFOSECFLAGISMORSING</code> Voila we finally got the flag.</p>
 
 <ul>
 <li><strong>CTF Flag for Level-3: [INFOSECFLAGISMORSING]</strong></li>
@@ -110,7 +110,7 @@
 
 <p><img class="<a" src="href="http://i.imgur.com/mXLQMcI.png">http://i.imgur.com/mXLQMcI.png</a>&#8221;></p>
 
-<p><p>Poping into Level -4. When i loaded the page there was a image along with a description was in Level-1. So initially saw the Description its was stating the HTTP expansion. When i did a mouseover on the image it was alerting me <code>stop poking me</code> so loaded the Burp and intercepted the levelfour.php page request and sent it to repeater where i got a response along with a Cookie value named <code>Set-Cookie</code>. This seems unusual because if you see the request page at left sideyou could notice the same Cookie value assigned for levelfour.php, so each and every time if you load the page your cookie values gets changed but this value was stable and unique. Initially i copied the Cookie value and pasted it in the Burp -> Decoder and did a smartdecode and manual decode there but nothing was reflected. Later for sometime we were analyzing the cookie value and we noticed underscores. Basically If you do any encryption the underscore will also be encrypted but in this case underscore remains the same. So we did some Cryptanalysis and found the strings were substituted based on ROT-13 algorithm where the underscores are not considered to rotate 13 chars. So we cracked the Value using online ROT-13 online Decoder and successfully gained the Flag <code>infosec_flagis_welovecookies</code>.</p>
+<p><p>Poping into Level -4. When we loaded the page there was a image along with a description that was in <code>Level-1</code>. Initially we deeply observed the Description, which mentions the <code>HTTP</code> expansion and when we did a mouseover on the image it was alerting us <code>stop poking me</code> so we loaded the Burp and intercepted the levelfour.php page request and sent it to repeater where we got a response along with a Cookie value named <code>Set-Cookie</code>. This seems unusual because if you see the request page at left side you could notice the same Cookie value assigned for levelfour.php. So each and every time if you load the page your cookie values gets changed but this value was stable and unique. After our analysis,  we copied the Cookie value and pasted it in the Burp -> Decoder and did a smartdecode and manual decode there but nothing was reflected. Basically If you do any encryption the underscore will also be encrypted but in this case underscore remains the same. So we did some Cryptanalysis and found the strings were substituted based on ROT-13 algorithm where the underscores are not considered to rotate 13 chars. So we cracked the Value using online ROT-13 online Decoder and successfully gained the Flag <code>infosec_flagis_welovecookies</code>.</p>
 
 <p><img class="<a" src="href="http://i.imgur.com/hjandI6.png">http://i.imgur.com/hjandI6.png</a>&#8221;></p>
 
@@ -125,7 +125,7 @@
 
 <h2>Walkthrough</h2>
 
-<p><p>Initially when we visit the levelfive.php page an xss alert were kept on popping up. So what we did is we ope <code>checked</code> the <code>Prevent this page from creating additional dialogs</code>.</p>
+<p><p>Initially when we visit the levelfive.php page an xss alert were kept on popping up. So what we did is we marked a tick on <code>check</code> box  for <code>Prevent this page from creating additional dialogs</code>.</p>
 
 <p><img class="<a" src="href="http://i.imgur.com/m6LKR3s.png">http://i.imgur.com/m6LKR3s.png</a>&#8221;></p>
 
@@ -143,7 +143,7 @@
 
 <p><img class="<a" src="href="http://i.imgur.com/xZTwYKq.png">http://i.imgur.com/xZTwYKq.png</a>&#8221;></p>
 
-<p>If you notice the second image you could see some lengthy binary bits which confirms that the image contains some text inside. We doubted correctly!!!! the alien.jpg image is a Stegno image. After this confirmation we copied the binary value and and converted the binary to string to gain the Level-5 flag <code>infosec_flagis_stegaliens</code></p>
+<p>If you notice the second image you could see some lengthy binary bits which confirms that the image contains some text inside. We doubted correctly!!!! the alien.jpg image is a Stegno image. After our confirmation we copied the binary value and and converted the binary to string to gain the Level-5 flag <code>infosec_flagis_stegaliens</code></p>
 
 <p><img class="<a" src="href="http://i.imgur.com/zdvfjkU.png">http://i.imgur.com/zdvfjkU.png</a>&#8221;></p>
 
@@ -158,7 +158,7 @@
 
 <p><img class="<a" src="href="http://i.imgur.com/lUNKoWb.png">http://i.imgur.com/lUNKoWb.png</a>&#8221;></p>
 
-<p><p>At Level-6 we donwloaded a .pcap file which was named as <code>sharkfin.pcap</code>. After Downloading the file we opened the file using Wireshark in Kali-linux and to be really frank we had some luck because to analyze the .pcap file you need to be very calm and steady. The luck was, after we opened the file we made a right click on the first packet stream and did a Followup UPD stream. After doing this we got some HEX values with 44bytes long.</p>
+<p><p>At Level-6 we donwloaded a .pcap file which was named as <code>sharkfin.pcap</code>. After Downloading the file we opened the file using Wireshark in Kali-linux and to be really frank we had some luck, because to analyze a .pcap file you need to be very patience. The luck here was, after we opened the file we made a right click on the first packet stream and did a Followup UPD stream. After doing this we got some HEX values with 44bytes long.</p>
 
 <p><img class="<a" src="href="http://i.imgur.com/597Bt0L.png">http://i.imgur.com/597Bt0L.png</a>&#8221;></p>
 
@@ -177,15 +177,15 @@
 
 <p><img class="<a" src="href="http://i.imgur.com/N2WEvCt.png">http://i.imgur.com/N2WEvCt.png</a>&#8221;></p>
 
-<p><p>When i initially browsed to Level-7 page the above page was shown to me. we noticed the url was 404.php so we thought the page is being redirected, whenever we click the level-7 tab in levels() page is redirected to 404.php but this was not the case. Initally i dropped and moved on to later levels. I found the levelseven.php at level-15 from <code>/var/www/html</code></p>
+<p><p>When we initally browsed to Level-7 the page was blank with a description and wiht the bounty value as shown in above image. Later we noticed the url i.e. 404.php so we thought the page is being redirected, whenever we click the level-7 tab in levels() page. But this was not the case. Initally we dropped and moved on to later levels and  we found the levelseven.php at level-15 from <code>/var/www/html</code> which is shown in below image</p>
 
 <p><img class="<a" src="href="http://i.imgur.com/DKHc8uQ.png">http://i.imgur.com/DKHc8uQ.png</a>&#8221;></p>
 
-<p>So after finding the levelseven.php page from level-15, we browsed to the page and we noticed a blank page</p>
+<p>So after finding the levelseven.php page from level-15, we browsed to it and we noticed a blank page as shown in below image</p>
 
 <p><img class="<a" src="href="http://i.imgur.com/Nv0wQxI.png">http://i.imgur.com/Nv0wQxI.png</a>&#8221;></p>
 
-<p>Later we did a intercept using Burp and we send the request to the Repeater we saw the response page with a 200 ok along with a base64 encoded value following up with the HTTP headers. So we decoded the value and Gained the Level-7 Flag <code>infosec_flagis_youfoundit</code></p>
+<p>Later we did a intercept using Burp and we sent the request to the Repeater and noticed the response page with a 200 ok along with a base64 encoded value following up with the HTTP headers. So we decoded the value and Gained the Level-7 Flag <code>infosec_flagis_youfoundit</code></p>
 
 <p><img class="<a" src="href="http://i.imgur.com/6nIRd1W.png">http://i.imgur.com/6nIRd1W.png</a>&#8221;></p>
 
@@ -220,7 +220,7 @@
 
 <p><img class="<a" src="href="http://i.imgur.com/wMGBTh3.png">http://i.imgur.com/wMGBTh3.png</a>&#8221;></p>
 
-<p><p>Contains a CISCO WEB -IDS login page. At initial stage we were doing some sql injection attacks nothing was working out. So whenever a user is buying a new device it might have a default username and password pre-configured. So we created a default Username and passowrd list for doing the automated Bruteforce thing. We intercepted the request into Burp and forwarded the request to the Burp-Intruder module, then select Username and password field and set the options as shown in below figures and then select the Payloads tab and load the Username and password list and hit <code>start-attack</code>.</p>
+<p><p>Contains a CISCO WEB -IDS login page. At initial stage we were doing some sql injection attacks nothing was working out. So we thought it this way, that whenever a user is buying a new device it will be preloaded with default username and password. So we created a default Username and passowrd list for doing the automated Bruteforce thing. Later We intercepted the request into Burp and forwarded the request to the Burp-Intruder module, then select the Username and password field and configured wtih the options as shown in below images and then select the Payloads tab and load the Username and password list and hit <code>start-attack</code>.</p>
 
 <p><p>Step 1:</p>
 
@@ -257,7 +257,7 @@
 
 <p><img class="<a" src="href="http://i.imgur.com/LR9fTbk.png">http://i.imgur.com/LR9fTbk.png</a>&#8221;></p>
 
-<p><p>You ca see the Description when you get-into level-10. <code>what kind of sound is this?</code> so if you note here sound is the hint. Initally we downloaded the file <code>Flag.wav</code> and we initially opened in VLC media player the audio was so noisy and we didnt hear it properly, so we went to playback tab and reduced the sound and even though we were not able to get a clear voice. We downloaded a wave editor called <code>Wavepad</code> where we reduced the Pitch &amp; Speed under the effects tab. After the reduction we were closely successful! eventhough some noisy was there, so again we reduced the speed,pitch and semitones to some extent and made a preview &hellip;. VOila we got a clear audio it vocaled us the Level-10 Flag <code>infosec_flagis_sound</code></p>
+<p><p>You can see the Description when you get-into level-10. <code>what kind of sound is this?</code> so if you notice here <code>sound</code> is the hint. Initally we downloaded the file <code>Flag.wav</code> and we opened it in VLC media player. During the Playback the audio went just like that and we didnt hear it properly, so we went to playback tab and reduced the sound and even though we were not able to get a clear voice. Then we downloaded a wave editor called <code>Wavepad</code> where we reduced the Pitch &amp; Speed under the effects tab. After the reduction we were closely successful! eventhough some noise ratio was there, so again we reduced the speed,pitch and semitones to some extent and made a preview &hellip;. VOila we got a clear audio it vocaled us the Level-10 Flag <code>infosec_flagis_sound</code></p>
 
 <ul>
 <li><strong>CTF Flag for Level-10: [infosec_flagis_sound]</strong></li>
@@ -270,11 +270,11 @@
 
 <p><img class="<a" src="href="http://i.imgur.com/yZHVRqg.png">http://i.imgur.com/yZHVRqg.png</a>&#8221;></p>
 
-<p><p>At the inital stage after the page got loaded i thought this page has two flags to be captured, but after viewing the description there is no sound file inside the page, instead there were two image file <code>lol.gif</code> and <code>php-logo-virus.jpg</code> . How you know?&hellip;.. We did a Inspect element using Firebug</p>
+<p><p>At the inital stage, after the page got loaded we thought this page has two flags to be captured,.. but after viewing the description there were no sound file inside the page, instead there were two image file <code>lol.gif</code> and <code>php-logo-virus.jpg</code> . How you know?&hellip;.. We did Inspect element on the webpage using Firebug&hellip;.</p>
 
 <p><img class="<a" src="href="http://i.imgur.com/y45L36K.png">http://i.imgur.com/y45L36K.png</a>&#8221;></p>
 
-<p><p>After the above identification we downloaded both the files, and started to do analysis on both the image files using UNIX <code>Strings</code> command which will output whatever text from a binary file. So we ran <code>Strings lol.gif | grep infosec</code> &mdash;> nothing reflected, then we moved on to the second image <code>Strings php-logo-virus.jpg | grep infosec</code> &ndash;> where we were reflected with the flag along with base64 values. After Decoding the values we gained a valid url link, so we followed the link it showed us the <code>Powerslide</code> image so my guess for this flag might be <code>infosec_flagis_powerslide</code>.</p>
+<p><p>After the above identification, we downloaded both the files, and started analyze both the image files using UNIX <code>Strings</code> command which will output whatever text from a binary file. So we ran <code>Strings lol.gif | grep infosec</code> &mdash;> nothing reflected, then we moved on to the second image <code>Strings php-logo-virus.jpg | grep infosec</code> &ndash;> where we were reflected with the flag along with base64 values. After Decoding the values we gained a valid url link, so we followed the link it showed us the <code>Powerslide</code> image so my guess for this flag might be <code>infosec_flagis_powerslide</code>.</p>
 
 <p><img class="<a" src="href="http://i.imgur.com/lgpjRo0.png">http://i.imgur.com/lgpjRo0.png</a>&#8221;></p>
 
@@ -297,7 +297,7 @@
 
 <p><img class="<a" src="href="http://i.imgur.com/GdzafXD.png">http://i.imgur.com/GdzafXD.png</a>&#8221;></p>
 
-<p><p> This level made me to drink so many redbull&rsquo;s. For writing the blog is easy but the way i found it was very difficult. Good work by Infosec Team.
+<p><p> This level made me to drink so many redbull&rsquo;s. For writing the blog is easy but the way we found it was very difficult. Good work by Infosec Team.
 Initially if you see this page it will be a look alike of the level-1 page only difference is the Description. <code>Dig Deeper</code> so from here we started to view the page source nothing much was found looks normal. we copied the level-12 source and level-1 source code and made a difference check online</p>
 
 <p><img class="<a" src="href="http://i.imgur.com/S0iuzB6.png">http://i.imgur.com/S0iuzB6.png</a>&#8221;></p>
@@ -321,11 +321,11 @@ Initially if you see this page it will be a look alike of the level-1 page only 
 
 <p><img class="<a" src="href="http://i.imgur.com/4f35E9o.png">http://i.imgur.com/4f35E9o.png</a>&#8221;></p>
 
-<p><p>When we loaded the level-13 page we didnt even found anyhting to download just a blank page with a huge description. I read the description again and again, what i noticed was that the challege is gone , Can you check if you can find the backup file for this one? blah blah blah &hellip;.. For me again the level-15 helped me, we did a change directory to <code>/var/www/html</code> and found the old file <code>levelthirteen.php.old</code></p>
+<p><p>When we loaded the level-13 page we didnt even found anyhting to download just a blank page with a huge description. We read the description again and again, what we noticed was that the <code>challege is gone, Can you check if you can find the backup file for this one?</code> blah blah blah &hellip;.. For me again the level-15 helped me, we did a change directory to <code>/var/www/html</code> and found a old file named <code>levelthirteen.php.old</code> as shown in the below image</p>
 
 <p><img class="<a" src="href="http://i.imgur.com/He3Bocy.png">http://i.imgur.com/He3Bocy.png</a>&#8221;></p>
 
-<p>After finding the old file we loaded it into the url and it poped us to download this file.</p>
+<p>After finding the old file we loaded it into the url and it popped us to download this file.</p>
 
 <p><img class="<a" src="href="http://i.imgur.com/OHIwZyA.png">http://i.imgur.com/OHIwZyA.png</a>&#8221;></p>
 
@@ -401,7 +401,7 @@ Initially if you see this page it will be a look alike of the level-1 page only 
 
 <p><img class="<a" src="href="http://i.imgur.com/4h00YQr.png">http://i.imgur.com/4h00YQr.png</a>&#8221;></p>
 
-<p>After we downloaded the file we started to listen, initially we heard so many Beeping sounds. It didnt strike me that its a Audio Morse code. After identifyint that its Morsecode we decoded the sound value with the help of <code>Morse View</code> windows based morse code decoder <code>[.. -. ..-. --- ... . -.-. ..-. .-.. .- --. .. ... -- --- .-. ... . -.-. --- -.. . - --- -. . ...]</code>. Finally we got the Bonus Flag <code>Infosec_flagis_morsecodetones</code>.</p>
+<p>After downloading the file we started to listen the wave file using vlc player, initially we heard some Beeping sounds. Initially it didn&rsquo;t strike me that its a Audio Morse code file. After identifying that its Morsecoded file, we decoded the sound value with the help of <code>Morse View</code> a windows based morse code decoder <code>[.. -. ..-. --- ... . -.-. ..-. .-.. .- --. .. ... -- --- .-. ... . -.-. --- -.. . - --- -. . ...]</code>. Finally we got the Bonus Flag <code>Infosec_flagis_morsecodetones</code>.</p>
 
 <ul>
 <li><strong>Bonus Flag [Infosec_flagis_morsecodetones]</strong></li>
