@@ -132,11 +132,11 @@
 
 <p><img src="http://i.imgur.com/BkcR8y0.png"></p>
 
-<p><p>After Reading the CTF Rules with an energy we entered into <code>Level-1</code> to find our first Flag. After entering into <code>level-1</code>, We found an little Alien Image and below the image there was a description <code>May the source be with you!</code>. Initially we didnt notice the hint <code>source</code> so we booted  Burp-pro and crafted the request then sent it to the Repeater module and hitted the <code>go</code> button and in some miliseconds we got response shown in below image.</p>
+<p><p>After Reading the CTF Rules with an energy we entered into <code>Level-1</code> to find our first Flag. At <code>level-1</code>, We found an little Alien Image and a description <code>May the source be with you!</code>. Initially we didnt notice the hint <code>source</code>, we booted Burp-suite and crafted the request and sent to the Repeater module and hitted <code>go</code> button and in some miliseconds we got response as shown in below image</p>
 
 <p><img src="http://i.imgur.com/Xv5R0Oe.png"></p>
 
-<p><p>If you see the response in above image, we got an 200 ok also if you  notice the Raw response you will find a Commented line as <code>&lt;!-- infosec_flagis_welcome --&gt;</code>, so we manually went into all the levels and did a <code>View Page Source</code> none of the levels were having this comment header at the starting. Cool!!!! Finally we conclude that the commented header is the Level-1 Flag.</p>
+<p><p>If you see the response, we got an 200 ok and also if you  notice the Raw response, you will find a Commented line as <code>&lt;!-- infosec_flagis_welcome --&gt;</code>. Later we manually went into all levels and did a <code>View Page Source</code> none of the levels were having this comment header at the starting. Isn&rsquo;t this Cool!!!! Finally we conclude that the commented header is the Level-1 Flag.</p>
 
 <ul>
 <li><strong>CTF Flag for Level-1: [infosec_flagis_welcome]</strong></li>
@@ -153,11 +153,11 @@
 
 <p><img src="http://i.imgur.com/Qn9QuZL.png"></p>
 
-<p><p>After crafting the request we did Forward in Burp to move on to next request shown below.</p>
+<p><p>After crafting the request we Forwarded it to Craft on the next request,</p>
 
 <p><img src="http://i.imgur.com/DNQ5d27.png"></p>
 
-<p><p>Where we found GET Reuqest for Leveltwo.jpeg file which was broken. Then we sent this GET request to Repeater, where we got repsonse along with some Base64 encoded value as shown in below Image.</p>
+<p><p>Where we found a GET Reuqest named <code>Leveltwo.jpeg</code> file which was broken. Then we sent the GET request to Repeater, where we got repsonse along with some Base64 encoded value as shown in below Image.</p>
 
 <p><img src="http://i.imgur.com/KvRorbH.png"></p>
 
@@ -176,7 +176,7 @@
 
 <p><img src="http://i.imgur.com/Mz5fRDs.png"></p>
 
-<p><p>To be frank im a great fan of QR Code scanning. So..so.. after entering into level-3 we scanned the shown QR code using our Samsung S5, where it popped us nothing found/matched. But We didnt give up so we googled for some online Barcode Reader/Decoder and found a link for decoding the QR code. So we downloaded the QR code and uploaded into the online Reader/Decoder to find what&rsquo;s inside the QR code.</p>
+<p><p>To be frank im a great fan of QR Code scanning. So..So.. after entering into level-3 we scanned the shown QR code using our Samsung S5, where it popped us nothing found/matched. But We didnt give up so we googled for some online Barcode Reader/Decoder and found a link for decoding the QR code. So we downloaded the QR code and uploaded into the online Reader/Decoder to find what&rsquo;s inside the QR code.</p>
 
 <p><img src="http://i.imgur.com/YwTox0c.png"></p>
 
@@ -197,7 +197,7 @@
 
 <p><img src="http://i.imgur.com/mXLQMcI.png"></p>
 
-<p><p>Poping into Level -4. When we loaded the page there was a image along with a description that was in <code>Level-1</code>. Initially we deeply observed the Description, which mentions the <code>HTTP</code> expansion and when we did a mouseover on the image it was alerting us <code>stop poking me</code> so we loaded the Burp and intercepted the levelfour.php page request and sent it to repeater where we got a response along with a Cookie value named <code>Set-Cookie</code>. This seems unusual because if you see the request page at left side you could notice the same Cookie value assigned for levelfour.php. So each and every time if you load the page your cookie values gets changed but this value was stable and unique. After our analysis,  we copied the Cookie value and pasted it in the Burp -> Decoder and did a smartdecode and manual decode there but nothing was reflected. Basically If you do any encryption the underscore will also be encrypted but in this case underscore remains the same. So we did some Cryptanalysis and found the strings were substituted based on ROT-13 algorithm where the underscores are not considered to rotate 13 chars. So we cracked the Value using online ROT-13 online Decoder and successfully gained the Flag <code>infosec_flagis_welovecookies</code>.</p>
+<p><p>Poping into Level -4. When we loaded the page there was a image along with a description same was in <code>Level-1</code>. We deeply observed the Description, which mentions the <code>HTTP</code> expansion and when we did a mouseover on the image it was alerting us <code>stop poking me</code>, so we loaded the Burp and intercepted the levelfour.php page request and sent it to repeater where we got a response along with a Cookie value named <code>Set-Cookie</code>. This seems unusual because if you see the request page at left side you could notice the same Cookie value assigned for levelfour.php. So each and every time if you load the page your cookie values gets changed but this value was stable and unique. After our analysis,  we copied the Cookie value and pasted it in the Burp -> Decoder and did a smartdecode and manual decode there but nothing was reflected. Basically If you do any encryption the underscore will also be encrypted but in this case underscore remains the same. So we did some Cryptanalysis and found the strings were substituted based on ROT-13 algorithm where the underscores are not considered to rotate 13 chars. So we cracked the Value using online ROT-13 online Decoder and successfully gained the Flag <code>infosec_flagis_welovecookies</code>.</p>
 
 <p><img src="http://i.imgur.com/hjandI6.png"></p>
 
@@ -948,7 +948,7 @@ Later we created a new directory for mounting to the NFS export and add our key 
 </span><span class='line'><span class="n">root</span><span class="vi">@Hacker</span><span class="ss">:~</span><span class="c1"># cat ~/.ssh/id_rsa.pub &gt;&gt; /tmp/dsm/root/.ssh/authorized_keys</span>
 </span><span class='line'>
 </span><span class='line'><span class="o">&mdash;&gt;</span> <span class="no">Finally</span> <span class="no">Do</span> <span class="n">the</span> <span class="n">ssh</span>
-</span><span class='line'><span class="n">root</span><span class="vi">@Hacker</span><span class="ss">:~</span><span class="c1"># ssh <a href="&#109;&#97;&#x69;&#108;&#x74;&#111;&#x3a;&#114;&#111;&#111;&#116;&#64;&#x31;&#57;&#50;&#46;&#x31;&#54;&#x38;&#46;&#x32;&#x2e;&#x37;">&#x72;&#x6f;&#111;&#116;&#x40;&#49;&#x39;&#50;&#46;&#x31;&#x36;&#56;&#46;&#50;&#x2e;&#55;</a></span>
+</span><span class='line'><span class="n">root</span><span class="vi">@Hacker</span><span class="ss">:~</span><span class="c1"># ssh <a href="&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#58;&#114;&#111;&#111;&#x74;&#x40;&#x31;&#x39;&#50;&#46;&#x31;&#54;&#x38;&#x2e;&#50;&#x2e;&#55;">&#x72;&#x6f;&#111;&#116;&#x40;&#49;&#x39;&#x32;&#x2e;&#49;&#x36;&#56;&#46;&#x32;&#46;&#55;</a></span>
 </span><span class='line'><span class="no">Last</span> <span class="ss">login</span><span class="p">:</span> <span class="no">Sun</span> <span class="no">Aug</span> <span class="mi">24</span> <span class="mi">22</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">44</span> <span class="mi">2014</span> <span class="n">from</span> <span class="p">:</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span>
 </span><span class='line'><span class="no">Linux</span> <span class="n">metasploitable</span> <span class="mi">2</span><span class="o">.</span><span class="mi">6</span><span class="o">.</span><span class="mi">24</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="n">server</span> <span class="c1">#1 SMP Thu Apr 10 13:58:00 UTC 2008 i686</span>
 </span><span class='line'>

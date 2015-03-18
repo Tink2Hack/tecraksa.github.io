@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Infosec-institute | CBE-Pentester]]></title>
   <link href="http://tecraksa.github.io/blog/categories/infosec-institute/atom.xml" rel="self"/>
   <link href="http://tecraksa.github.io/"/>
-  <updated>2015-03-17T22:25:53+05:30</updated>
+  <updated>2015-03-18T12:48:50+05:30</updated>
   <id>http://tecraksa.github.io/</id>
   <author>
     <name><![CDATA[D.S.Sellva Manoj]]></name>
@@ -58,11 +58,11 @@
 
 <p><img class="<a" src="href="http://i.imgur.com/BkcR8y0.png">http://i.imgur.com/BkcR8y0.png</a>&#8221;></p>
 
-<p><p>After Reading the CTF Rules with an energy we entered into <code>Level-1</code> to find our first Flag. After entering into <code>level-1</code>, We found an little Alien Image and below the image there was a description <code>May the source be with you!</code>. Initially we didnt notice the hint <code>source</code> so we booted  Burp-pro and crafted the request then sent it to the Repeater module and hitted the <code>go</code> button and in some miliseconds we got response shown in below image.</p>
+<p><p>After Reading the CTF Rules with an energy we entered into <code>Level-1</code> to find our first Flag. At <code>level-1</code>, We found an little Alien Image and a description <code>May the source be with you!</code>. Initially we didnt notice the hint <code>source</code>, we booted Burp-suite and crafted the request and sent to the Repeater module and hitted <code>go</code> button and in some miliseconds we got response as shown in below image</p>
 
 <p><img class="<a" src="href="http://i.imgur.com/Xv5R0Oe.png">http://i.imgur.com/Xv5R0Oe.png</a>&#8221;></p>
 
-<p><p>If you see the response in above image, we got an 200 ok also if you  notice the Raw response you will find a Commented line as <code>&lt;!-- infosec_flagis_welcome --&gt;</code>, so we manually went into all the levels and did a <code>View Page Source</code> none of the levels were having this comment header at the starting. Cool!!!! Finally we conclude that the commented header is the Level-1 Flag.</p>
+<p><p>If you see the response, we got an 200 ok and also if you  notice the Raw response, you will find a Commented line as <code>&lt;!-- infosec_flagis_welcome --&gt;</code>. Later we manually went into all levels and did a <code>View Page Source</code> none of the levels were having this comment header at the starting. Isn&rsquo;t this Cool!!!! Finally we conclude that the commented header is the Level-1 Flag.</p>
 
 <ul>
 <li><strong>CTF Flag for Level-1: [infosec_flagis_welcome]</strong></li>
@@ -79,11 +79,11 @@
 
 <p><img class="<a" src="href="http://i.imgur.com/Qn9QuZL.png">http://i.imgur.com/Qn9QuZL.png</a>&#8221;></p>
 
-<p><p>After crafting the request we did Forward in Burp to move on to next request shown below.</p>
+<p><p>After crafting the request we Forwarded it to Craft on the next request,</p>
 
 <p><img class="<a" src="href="http://i.imgur.com/DNQ5d27.png">http://i.imgur.com/DNQ5d27.png</a>&#8221;></p>
 
-<p><p>Where we found GET Reuqest for Leveltwo.jpeg file which was broken. Then we sent this GET request to Repeater, where we got repsonse along with some Base64 encoded value as shown in below Image.</p>
+<p><p>Where we found a GET Reuqest named <code>Leveltwo.jpeg</code> file which was broken. Then we sent the GET request to Repeater, where we got repsonse along with some Base64 encoded value as shown in below Image.</p>
 
 <p><img class="<a" src="href="http://i.imgur.com/KvRorbH.png">http://i.imgur.com/KvRorbH.png</a>&#8221;></p>
 
@@ -102,7 +102,7 @@
 
 <p><img class="<a" src="href="http://i.imgur.com/Mz5fRDs.png">http://i.imgur.com/Mz5fRDs.png</a>&#8221;></p>
 
-<p><p>To be frank im a great fan of QR Code scanning. So..so.. after entering into level-3 we scanned the shown QR code using our Samsung S5, where it popped us nothing found/matched. But We didnt give up so we googled for some online Barcode Reader/Decoder and found a link for decoding the QR code. So we downloaded the QR code and uploaded into the online Reader/Decoder to find what&rsquo;s inside the QR code.</p>
+<p><p>To be frank im a great fan of QR Code scanning. So..So.. after entering into level-3 we scanned the shown QR code using our Samsung S5, where it popped us nothing found/matched. But We didnt give up so we googled for some online Barcode Reader/Decoder and found a link for decoding the QR code. So we downloaded the QR code and uploaded into the online Reader/Decoder to find what&rsquo;s inside the QR code.</p>
 
 <p><img class="<a" src="href="http://i.imgur.com/YwTox0c.png">http://i.imgur.com/YwTox0c.png</a>&#8221;></p>
 
@@ -123,7 +123,7 @@
 
 <p><img class="<a" src="href="http://i.imgur.com/mXLQMcI.png">http://i.imgur.com/mXLQMcI.png</a>&#8221;></p>
 
-<p><p>Poping into Level -4. When we loaded the page there was a image along with a description that was in <code>Level-1</code>. Initially we deeply observed the Description, which mentions the <code>HTTP</code> expansion and when we did a mouseover on the image it was alerting us <code>stop poking me</code> so we loaded the Burp and intercepted the levelfour.php page request and sent it to repeater where we got a response along with a Cookie value named <code>Set-Cookie</code>. This seems unusual because if you see the request page at left side you could notice the same Cookie value assigned for levelfour.php. So each and every time if you load the page your cookie values gets changed but this value was stable and unique. After our analysis,  we copied the Cookie value and pasted it in the Burp -> Decoder and did a smartdecode and manual decode there but nothing was reflected. Basically If you do any encryption the underscore will also be encrypted but in this case underscore remains the same. So we did some Cryptanalysis and found the strings were substituted based on ROT-13 algorithm where the underscores are not considered to rotate 13 chars. So we cracked the Value using online ROT-13 online Decoder and successfully gained the Flag <code>infosec_flagis_welovecookies</code>.</p>
+<p><p>Poping into Level -4. When we loaded the page there was a image along with a description same was in <code>Level-1</code>. We deeply observed the Description, which mentions the <code>HTTP</code> expansion and when we did a mouseover on the image it was alerting us <code>stop poking me</code>, so we loaded the Burp and intercepted the levelfour.php page request and sent it to repeater where we got a response along with a Cookie value named <code>Set-Cookie</code>. This seems unusual because if you see the request page at left side you could notice the same Cookie value assigned for levelfour.php. So each and every time if you load the page your cookie values gets changed but this value was stable and unique. After our analysis,  we copied the Cookie value and pasted it in the Burp -> Decoder and did a smartdecode and manual decode there but nothing was reflected. Basically If you do any encryption the underscore will also be encrypted but in this case underscore remains the same. So we did some Cryptanalysis and found the strings were substituted based on ROT-13 algorithm where the underscores are not considered to rotate 13 chars. So we cracked the Value using online ROT-13 online Decoder and successfully gained the Flag <code>infosec_flagis_welovecookies</code>.</p>
 
 <p><img class="<a" src="href="http://i.imgur.com/hjandI6.png">http://i.imgur.com/hjandI6.png</a>&#8221;></p>
 
