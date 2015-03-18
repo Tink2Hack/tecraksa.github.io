@@ -39,11 +39,11 @@ Here are the Write-up's For all the CTF Levels ranging from [1 - 15]. Kindly com
 
 {% img http://i.imgur.com/BkcR8y0.png %}
 
-<p>After Reading the CTF Rules with an energy we entered into `Level-1` to find our first Flag. After entering into `level-1`, We found an little Alien Image and below the image there was a description `May the source be with you!`. Initially we didnt notice the hint `source` so we booted  Burp-pro and crafted the request then sent it to the Repeater module and hitted the `go` button and in some miliseconds we got response shown in below image.
+<p>After Reading the CTF Rules with an energy we entered into `Level-1` to find our first Flag. At `level-1`, We found an little Alien Image and a description `May the source be with you!`. Initially we didnt notice the hint `source`, we booted Burp-suite and crafted the request and sent to the Repeater module and hitted `go` button and in some miliseconds we got response as shown in below image
 
 {% img http://i.imgur.com/Xv5R0Oe.png %}
 
-<p>If you see the response in above image, we got an 200 ok also if you  notice the Raw response you will find a Commented line as `<!-- infosec_flagis_welcome -->`, so we manually went into all the levels and did a `View Page Source` none of the levels were having this comment header at the starting. Cool!!!! Finally we conclude that the commented header is the Level-1 Flag.
+<p>If you see the response, we got an 200 ok and also if you  notice the Raw response, you will find a Commented line as `<!-- infosec_flagis_welcome -->`. Later we manually went into all levels and did a `View Page Source` none of the levels were having this comment header at the starting. Isn't this Cool!!!! Finally we conclude that the commented header is the Level-1 Flag.
 
 * **CTF Flag for Level-1: [infosec_flagis_welcome]**
 
@@ -56,11 +56,11 @@ Here are the Write-up's For all the CTF Levels ranging from [1 - 15]. Kindly com
 
 {% img http://i.imgur.com/Qn9QuZL.png %}
 
-<p>After crafting the request we did Forward in Burp to move on to next request shown below.
+<p>After crafting the request we Forwarded it to Craft on the next request,
 
 {% img http://i.imgur.com/DNQ5d27.png %}
 
-<p>Where we found GET Reuqest for Leveltwo.jpeg file which was broken. Then we sent this GET request to Repeater, where we got repsonse along with some Base64 encoded value as shown in below Image.
+<p>Where we found a GET Reuqest named `Leveltwo.jpeg` file which was broken. Then we sent the GET request to Repeater, where we got repsonse along with some Base64 encoded value as shown in below Image.
 
 {% img http://i.imgur.com/KvRorbH.png %}
 
@@ -75,7 +75,7 @@ Here are the Write-up's For all the CTF Levels ranging from [1 - 15]. Kindly com
 
 {% img http://i.imgur.com/Mz5fRDs.png %}
 
-<p>To be frank im a great fan of QR Code scanning. So..so.. after entering into level-3 we scanned the shown QR code using our Samsung S5, where it popped us nothing found/matched. But We didnt give up so we googled for some online Barcode Reader/Decoder and found a link for decoding the QR code. So we downloaded the QR code and uploaded into the online Reader/Decoder to find what's inside the QR code.
+<p>To be frank im a great fan of QR Code scanning. So..So.. after entering into level-3 we scanned the shown QR code using our Samsung S5, where it popped us nothing found/matched. But We didnt give up so we googled for some online Barcode Reader/Decoder and found a link for decoding the QR code. So we downloaded the QR code and uploaded into the online Reader/Decoder to find what's inside the QR code.
 
 {% img http://i.imgur.com/YwTox0c.png %}
 
@@ -92,7 +92,7 @@ After translating the Morse Code we were stumbelled with the result!!!!! the QR 
 
 {% img  http://i.imgur.com/mXLQMcI.png %}
 
-<p>Poping into Level -4. When we loaded the page there was a image along with a description that was in `Level-1`. Initially we deeply observed the Description, which mentions the `HTTP` expansion and when we did a mouseover on the image it was alerting us `stop poking me` so we loaded the Burp and intercepted the levelfour.php page request and sent it to repeater where we got a response along with a Cookie value named `Set-Cookie`. This seems unusual because if you see the request page at left side you could notice the same Cookie value assigned for levelfour.php. So each and every time if you load the page your cookie values gets changed but this value was stable and unique. After our analysis,  we copied the Cookie value and pasted it in the Burp -> Decoder and did a smartdecode and manual decode there but nothing was reflected. Basically If you do any encryption the underscore will also be encrypted but in this case underscore remains the same. So we did some Cryptanalysis and found the strings were substituted based on ROT-13 algorithm where the underscores are not considered to rotate 13 chars. So we cracked the Value using online ROT-13 online Decoder and successfully gained the Flag `infosec_flagis_welovecookies`.
+<p>Poping into Level -4. When we loaded the page there was a image along with a description same was in `Level-1`. We deeply observed the Description, which mentions the `HTTP` expansion and when we did a mouseover on the image it was alerting us `stop poking me`, so we loaded the Burp and intercepted the levelfour.php page request and sent it to repeater where we got a response along with a Cookie value named `Set-Cookie`. This seems unusual because if you see the request page at left side you could notice the same Cookie value assigned for levelfour.php. So each and every time if you load the page your cookie values gets changed but this value was stable and unique. After our analysis,  we copied the Cookie value and pasted it in the Burp -> Decoder and did a smartdecode and manual decode there but nothing was reflected. Basically If you do any encryption the underscore will also be encrypted but in this case underscore remains the same. So we did some Cryptanalysis and found the strings were substituted based on ROT-13 algorithm where the underscores are not considered to rotate 13 chars. So we cracked the Value using online ROT-13 online Decoder and successfully gained the Flag `infosec_flagis_welovecookies`.
 
 {% img http://i.imgur.com/hjandI6.png %}
 
